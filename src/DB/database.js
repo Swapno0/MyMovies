@@ -21,7 +21,7 @@ const connectDB = async () =>{
 const SQLexecuter = async (sql) => {
     let result;
     try {
-        result = await connectionInstance.execute(sql);
+        result = await connectionInstance.execute(sql,{},{autoCommit:true});
     } catch (error) {
         console.log(error)
     }
