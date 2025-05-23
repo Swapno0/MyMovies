@@ -59,14 +59,7 @@ const registerUser = (async (req, res) => {
     const storedAvatar = await uploader(avatarLocalPath)
 
     // encrypting password
-
-
-
-
     const encrypted_password = await bcrypt.hash(password, 6)
-
-
-
 
 
     // Do database entry the above informations.
@@ -85,9 +78,19 @@ const registerUser = (async (req, res) => {
     }
 
     // return response
-    return res.status(201).json(
-        new ApiResponse(200, createdUser.rows, "User registered successfully")
-    )
+    // return res.status(201).json(
+    //     new ApiResponse(200, createdUser.rows, "User registered successfully")
+    // )
+
+    // redirect to appropriate page.
+    req.session.userid = userName
+    req.session.isAuth = true
+    let check_login = `SELECT ID,userName,email,bio,avatar,creationDate
+    FROM MYMOVIES.USERS
+    WHERE MYMOVIES.USERS.USERNAME = '${req.session.userid}'`
+    const loggedInUser = await SQLexecuter(check_login)
+    req.session.loggedInUser = {loggedInUser}
+    res.redirect('/home')
 })
 
 

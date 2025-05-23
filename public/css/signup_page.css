@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+body{
+    background-color: black;
+    color: rgba(255, 255, 255, 0.744);
+    
+}
+
+/* ........................................................................... */
+/* ........................................................................... */
+/* ........................................................................... */
+
+.container{
+    height: 100vh;
+    gap: 30px;
+}
+
+.container form div{
+    margin: 15px;
+}
+
+/* ........................................................................... */
+
+.email input{
+    margin-left: 28px;
+}
+
+.bio label{
+    position: relative;
+    bottom: 55px;
+}
+.bio textarea{
+    margin-left: 43px;
+}
+
+.password input{
+    margin-left: 5px;
+}
+
+.avatar input{
+    margin-left: 24px;
+}
