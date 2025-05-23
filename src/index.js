@@ -7,7 +7,7 @@ dotenv.config({
 
 
 // Connecting with Database.
-const Port = process.env.PORT;
+const Port = process.env.PORT || 8000;
 await connectDB()
 .then(()=>{
     app.listen(Port, () =>{
@@ -17,6 +17,7 @@ await connectDB()
 .catch((err) =>{
     console.log(err);
 })
+
 
 
 

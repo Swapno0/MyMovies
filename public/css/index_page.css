@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+body{
+    background-color: black;
+    color: rgba(255, 255, 255, 0.744);
+    
+}
+
+/* ........................................................................... */
+/* ........................................................................... */
+/* ........................................................................... */
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.container div{
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 15px;
+    color: black;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+.container div>a{
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+}
+.container div:hover{
+    background-color: brown;
+}
