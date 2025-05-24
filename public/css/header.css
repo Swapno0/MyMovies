@@ -1,0 +1,140 @@
+.box{
+    height: 100vh;
+    background-color: black;
+    width: 350px;
+    position: absolute;
+    z-index: 1;
+    flex-direction: column;
+    transform: translateX(-350px);
+}
+.box .profile_box{
+    height: 36px;
+    width: fit-content;
+    background-color: #5d5a5a99;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    color: white;
+    border-radius: 20px 20px;
+    position: absolute;
+    top: 30px;
+    right: 15px;
+}
+.box .profile_box:hover{
+    background-color: #76747499;
+    border-color: aqua;
+    transition: border-color 1.2s ease;
+}
+
+.box .profile_box .name{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: rgba(255, 255, 255, 0.92);
+    
+}
+.box .profile_box img{
+    position: relative;
+    left: 2px;
+}
+
+
+.box #line1{
+    position: relative;
+    top: 60px;
+}
+.box #line2{
+    position: relative;
+    top: 320px;
+}
+
+.box .logout_box{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    height: 50px;
+    width: 100px;
+    background-color: rgba(255, 255, 255, 0.797);
+    position: relative;
+    top: 330px;
+    left: 125px;
+    border-radius: 40px;
+}
+.box .logout_box:hover{
+    background-color: white;
+}
+.box .logout{
+    text-decoration: none;
+    color: black;
+}
+
+.header{
+    background-color: rgb(0, 0, 0);
+    height: 50px;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+
+.header .first img{
+    height: 30px;
+    width: 30px;
+}
+
+
+.header .home_btn button{
+    height: 44px;
+    width: 44px;
+    background-color: #5d5a5a99;
+    border: none;
+    border-radius: 30px;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+.header .home_btn button:hover{
+    background-color: #76747499 ;
+    margin-right: 8px;
+    margin-left: 28px;
+    height: 48px;
+    width: 48px;
+}
+.header .home_btn button img{
+    height: 24px;
+    width: 24px;
+}
+
+.header .search_bar button{
+    height: 44px;
+    width: 400px;
+    background-color:rgba(0, 255, 255, 0.915);
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+}
+.header .search_bar button:hover{
+    background-color:aqua;
+}
+.header .search_bar button img{
+    height: 24px;
+    width: 24px;
+}
+.header .search_bar button input{
+    height: 24px;
+    width: 170px;
+    margin: 5px;
+    background-color: rgba(0, 255, 255, 0);
+    border: none;
+    outline: none;
+}
+.header .search_bar button input{
+    width: 300px;
+    height: 30px;
+    position: relative;
+    top: 2px;
+}
+.header .search_bar button input::placeholder{
+    font-size: medium;
+}
+

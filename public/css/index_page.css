@@ -1,16 +1,18 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     /* scrollbar-width: none; */
 }
-*::-webkit-scrollbar{
+
+*::-webkit-scrollbar {
     width: 0px;
 }
-body{
+
+body {
     /* background-color: black; */
     color: rgba(255, 255, 255, 0.744);
-    background-image: url("/images/index_page.avif");
+    background-image: url("/images/movie6.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -20,32 +22,47 @@ body{
 /* ........................................................................... */
 /* ........................................................................... */
 
-.container{
+.container {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    position: relative;
+    top: 170px;
+    right: 60px;
 }
 
-.container div{
-    height: 30px;
-    width: 100px;
-    border: none;
-    border-radius: 15px;
-    color: black;
-    background-color: aliceblue;
+.container div {
+    height: 40px;
+    width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #1d2233;
+    color: #ffffff;
+
 }
-.container a{
+
+.container .signup_btn {
+    background-color: #d19433;
+    color: #ffffff;
+}
+
+.container div:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.container a {
     text-decoration: none;
-    color: black;
-    font-family: sans-serif;
-}
-.container div:hover{
-    background-color: rgba(240, 248, 255, 0.496);
 }

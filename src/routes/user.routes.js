@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {loginUser, registerUser} from "../controller/user.controller.js"
+import {loginUser, logoutUser, registerUser} from "../controller/user.controller.js"
 import { upload } from "../middleware/multer.middleware.js";
 
 const router = Router()
@@ -48,8 +48,15 @@ router.route("/register").post(
 router.post('/login',loginUser);
 
 router.get('/home',(req,res) => {
+  if (req.session.isAuth) {
     res.render('home',req.session.loggedInUser)
+  }
+  else{
+    res.redirect("/")
+  }
 })
+
+router.get('/logout',logoutUser)
 
 
 

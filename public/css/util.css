@@ -10,3 +10,46 @@
 .wrap{
     flex-wrap: wrap;
 }
+
+
+.cursor{
+    cursor: pointer;
+}
+
+.invert{
+    filter: invert(1);
+}
+
+
+.bg_grey{
+    background-color: #1f1f1f;
+}
+.bg_dark_grey{
+    background-color: #161616;
+}
+.box_corners{
+    border-radius: 10px;
+}
+
+
+
+.hamburger_pop{
+    translate: 350px;
+    transition: translate 0.5s ease;
+    /* position: fixed; */
+}
+.hamburger_close{
+    translate: -350px;
+    transition: translate 0.5s ease;
+}
+
+
+
+
+
+.line{
+    height: 20px;
+    width: 340px;
+    border-top: 1px solid white;
+    margin: 0px 5px;
+}

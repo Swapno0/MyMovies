@@ -157,7 +157,16 @@ const loginUser = (async (req, res) => {
     // return appropriate page after succesfully log in
     // res.render('home',{loggedInUser})
     res.redirect('/home')
+})
 
+
+
+
+
+
+const logoutUser = (async (req,res) => {
+    req.session.destroy()
+    res.redirect("/")
 })
 
 
@@ -168,6 +177,4 @@ const loginUser = (async (req, res) => {
 
 
 
-
-
-export { registerUser, loginUser }
+export { registerUser, loginUser,logoutUser }
