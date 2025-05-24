@@ -34,7 +34,8 @@ app.use(session({
   resave: false,                      // Don't save session if unmodified
   saveUninitialized: false,           // Don't create session until something stored
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24       // 1 day (in milliseconds)
+    maxAge: 1000 * 60 * 60 * 24,       // 1 day (in milliseconds)
+    // sameSite: "lax"
   }
 }));
 

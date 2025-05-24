@@ -6,22 +6,28 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="/css/login_page.css">
     <link rel="stylesheet" href="/css/util.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container flex justify align">
-        <form action="/login" method="post">
-            <div class="username">
-                <label for="username">Username: </label>
-                <input type="text" id="username" name="userName" placeholder="Enter your username">
-            </div>
-            <div class="password">
-                <label for="password">Password: </label>
-                <input type="text" id="password" name="password" placeholder="Enter your password">
-            </div>
-            <div>
-                <input type="submit">
-            </div>
-        </form>
+        <div class="box flex align">
+            <p class="heading">LOGIN</p>
+            <form action="/login" method="post" class="flex align">
+                <div class="username flex field">
+                    <input type="text" id="username" name="userName" placeholder="Username" autocomplete="off">
+                </div>
+                <div class="password flex field">
+                    <input type="text" id="password" name="password" placeholder="Password" autocomplete="off">
+                </div>
+                <div class="forgot"><a href="">Forgot Password?</a></div>
+                <div class="submit flex field">
+                    <input id="submit" type="submit" value="Login">
+                </div>
+            </form>
+            <p class="last_para">Don't have an account? <a href="/signup_page">Register</a> </p>
+        </div>
     </div>
 </body>
 </html>

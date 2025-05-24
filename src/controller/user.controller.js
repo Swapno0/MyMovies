@@ -157,6 +157,7 @@ const loginUser = (async (req, res) => {
     // return appropriate page after succesfully log in
     // res.render('home',{loggedInUser})
     res.redirect('/home')
+
 })
 
 

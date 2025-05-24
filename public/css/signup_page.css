@@ -8,8 +8,13 @@
     width: 0px;
 }
 body{
-    background-color: black;
+    /* background-color: black; */
     color: rgba(255, 255, 255, 0.744);
+    background-image: url("/images/signup_page.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
     
 }
 
@@ -23,27 +28,110 @@ body{
 }
 
 .container form div{
-    margin: 15px;
+    margin: 8px;
+}
+.container textarea{
+    margin: 8px;
 }
 
 /* ........................................................................... */
 
-.email input{
-    margin-left: 28px;
+.container .box{
+    background-color: rgba(255, 255, 255, 0.115);
+    height: 500px;
+    width: 350px;
+    border: 1px solid white;
+    border-radius: 5px;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+}
+.container .box .heading{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    padding-top: 30px;
+    padding-bottom: 10px;
 }
 
-.bio label{
+.container form{
+    flex-direction: column;
+}
+
+.container form .field{
+    background-color: rgba(255, 255, 255, 0.115);
+    border: 1px solid white;
+    width: 300px;
+    height: 30px;
+    border-radius: 8px;
+    justify-content: flex-start;
+}
+.container form .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+}
+.container form .field input::placeholder{
+    color: rgb(46, 45, 45);
+}
+
+.container .box .bio{
+    background-color: rgba(255, 255, 255, 0.115);
+    border: 1px solid white;
+    border-radius: 8px;
+    justify-content: flex-start;
+}
+.container textarea{
+    resize: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    
+}
+.container textarea::placeholder{
+    color: rgb(46, 45, 45);
+}
+
+.container form .avatar{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+.container form .avatar input{
     position: relative;
-    bottom: 55px;
-}
-.bio textarea{
-    margin-left: 43px;
+    right: 5px;
+
 }
 
-.password input{
-    margin-left: 5px;
+.container form .submit{
+    background-color: rgb(228, 227, 227);
+    justify-content: center;
+}
+.container form .submit:hover{
+    cursor: pointer;
+    background-color: white;
+}
+.container form #submit{
+    height: 40px;
+    width: 200px;
+    width: 250px;
+    height: 30px;
+    cursor: pointer;
 }
 
-.avatar input{
-    margin-left: 24px;
+
+.container .last_para{
+    font-size: 15px;
+}
+
+.container p a{
+    text-decoration: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 13px;
+}
+.container p a:hover{
+    color: rgb(229, 242, 254);
 }
