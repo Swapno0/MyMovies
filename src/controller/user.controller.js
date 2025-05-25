@@ -28,6 +28,10 @@ const registerUser = (async (req, res) => {
     if (userName === "") {
         throw new ApiError(400, "userName is required")
     }
+    if (userName.length > 15) {
+        console.log(90)
+        throw new ApiError(400,"userName must be less than 15 characters")
+    }
     if (email === "") {
         throw new ApiError(400, "email is required")
     }

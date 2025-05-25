@@ -60,6 +60,10 @@ body{
     border-radius: 8px;
     justify-content: flex-start;
 }
+.container form .field:hover{
+    border-color: rgb(255, 196, 0);
+    transition: border-color 0.5s ease-in;
+}
 .container form .field input{
     background-color: rgba(255, 255, 255, 0);
     border: none;
@@ -81,11 +85,13 @@ body{
     font-size: 15px;
 }
 .container .forgot a:hover{
-    color: rgb(229, 242, 254);
+    color: rgb(250, 223, 133);
+    transition: color 0.5s ease;
 }
 .container form .submit{
     background-color: rgb(228, 227, 227);
     justify-content: center;
+    border: none;
 }
 .container form .submit:hover{
     cursor: pointer;
@@ -97,6 +103,7 @@ body{
     width: 250px;
     height: 30px;
     cursor: pointer;
+    border: none;
 }
 
 .container .last_para{
@@ -112,5 +119,6 @@ body{
     font-size: 13px;
 }
 .container p a:hover{
-    color: rgb(229, 242, 254);
+    color: rgb(250, 223, 133);
+    transition: color 0.5s ease;
 }
