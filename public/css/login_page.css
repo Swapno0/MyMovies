@@ -25,6 +25,13 @@ body{
 .container{
     height: 100vh;
     gap: 30px;
+    flex-direction: column;
+}
+
+.container .error_message{
+    position: absolute;
+    top: 190px;
+    left: 655px;
 }
 
 .container .box{

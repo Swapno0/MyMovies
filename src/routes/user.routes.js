@@ -15,10 +15,10 @@ const router = Router()
 
 router.get('/',(req,res) =>{
   if (req.session.isAuth == true) {
-    console.log(req.session.userid)
-    console.log(req.session.isAuth)
-    console.log(req.session.loggedInUser)
-    console.log(req.session.loggedInUser.rows)
+    // console.log(req.session.userid)
+    // console.log(req.session.isAuth)
+    // console.log(req.session.loggedInUser)
+    // console.log(req.session.loggedInUser.rows)
     res.redirect('/home')
   }
   else{
@@ -26,10 +26,14 @@ router.get('/',(req,res) =>{
   }
 })
 router.get('/login_page',(req,res) =>{
-  res.render("login_page")
+  const error = req.session.error
+  delete req.session.error
+  res.render("login_page",{error})
 })
 router.get('/signup_page',(req,res) =>{
-  res.render("signup_page")
+  const error = req.session.error
+  delete req.session.error
+  res.render("signup_page",{error})
 })
 
 router.route("/register").post(

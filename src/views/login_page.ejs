@@ -12,6 +12,9 @@
 </head>
 <body>
     <div class="container flex justify align">
+        <% if (error) { %>
+            <div class="error_message"><span class="asterisk">*</span><%= error %></div>
+        <% } %>
         <div class="box flex align">
             <p class="heading">LOGIN</p>
             <form action="/login" method="post" class="flex align">

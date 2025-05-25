@@ -25,18 +25,26 @@ const registerUser = (async (req, res) => {
     const { userName, email, bio, password } = req.body
 
     // Validating the inputs
-    if (userName === "") {
-        throw new ApiError(400, "userName is required")
-    }
-    if (userName.length > 15) {
-        console.log(90)
-        throw new ApiError(400,"userName must be less than 15 characters")
+    // if (userName === "" || userName.length > 15) {
+    //     throw new ApiError(400, "userName is required")
+    // }
+    // if (email === "") {
+    //     throw new ApiError(400, "email is required")
+    // }
+    // if (password === "") {
+    //     throw new ApiError(400, "password is required")
+    // }
+    if (userName === "" || userName.length > 15) {
+        req.session.error = "Username must be within 0 to 15 characters"
+        return res.redirect('/signup_page')
     }
     if (email === "") {
-        throw new ApiError(400, "email is required")
+        req.session.error = "Email is required. Max 30 characters"
+        return res.redirect('/signup_page')
     }
     if (password === "") {
-        throw new ApiError(400, "password is required")
+        req.session.error = "Password is required"
+        return res.redirect('/signup_page')
     }
 
     // Checking if user exists
@@ -46,16 +54,23 @@ const registerUser = (async (req, res) => {
                         `
     const existedUser = await SQLexecuter(check_existed)
     if (existedUser.rows.length != 0) {
-        throw new ApiError(401, "User already exists")
+        req.session.error = "User already exists"
+        return res.redirect('/signup_page')
     }
 
 
     // we access and use files using multer.
-    const avatarLocalPath = req.files?.avatar[0]?.path
+    const avatarLocalPath = req.files?.avatar?avatar[0]?.path:null
+
+    // const avatarLocalPath = req.files?.avatar && req.files.avatar[0]
+    //     ? req.files.avatar[0].path
+    //     : null;
 
     //validation again for required files.
     if (!avatarLocalPath) {
-        throw new ApiError(400, "Avatar is needed")
+        req.session.error = "Avatar is required."
+        console.log(1)
+        return res.redirect('/signup_page')
     }
 
 
@@ -78,7 +93,8 @@ const registerUser = (async (req, res) => {
                             WHERE MYMOVIES.USERS.userName = '${userName}'`
     const createdUser = await SQLexecuter(check_create_user)
     if (!createdUser) {
-        throw new ApiError(401, "something went wrong while registering user")
+        req.session.error = "Something went wrong while registering the user"
+        return res.redirect('/signup_page')
     }
 
     // return response
@@ -108,7 +124,8 @@ const loginUser = (async (req, res) => {
     // Take username and password from body.
     const { userName, password } = req.body
     if (!userName) {
-        throw new ApiError(400, "Username is required")
+        req.session.error = "Username is required."
+        return res.redirect('/login_page')
     }
 
 
@@ -117,7 +134,8 @@ const loginUser = (async (req, res) => {
     WHERE MYMOVIES.USERS.USERNAME = '${userName}'`
     const existingUser = await SQLexecuter(check_user)
     if (existingUser.rows.length == 0) {
-        throw new ApiError(401, "Username doesnt exist")
+        req.session.error = "Username doesnt exist"
+        return res.redirect('/login_page')
     }
 
 
@@ -138,7 +156,8 @@ const loginUser = (async (req, res) => {
     // if password correct, generate a session.
     const pass_match = await bcrypt.compare(password, PASS_WORD.rows[0].PASSWORD)
     if (!pass_match) {
-        throw new ApiError(401, "Password is incorrect")
+        req.session.error = "Password doesn't match"
+        return res.redirect('/login_page')
     }
     else {
         req.session.userid = userName
