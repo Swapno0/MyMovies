@@ -14,6 +14,7 @@ const router = Router()
 // })
 
 router.get('/',(req,res) =>{
+  console.log(3)
   if (req.session.isAuth == true) {
     // console.log(req.session.userid)
     // console.log(req.session.isAuth)
@@ -26,7 +27,6 @@ router.get('/',(req,res) =>{
   }
 })
 router.get('/login_page',(req,res) =>{
-  console.log(1)
   const error = req.session.error
   delete req.session.error
   res.render("login_page",{error})
@@ -52,16 +52,12 @@ router.route("/register").post(
 
 router.post('/login',loginUser);
 
-router.get('/home',(req,res) => {
-  if (req.session.isAuth) {
-    res.render('home',req.session.loggedInUser)
-  }
-  else{
-    res.redirect("/")
-  }
-})
-
 router.get('/logout',logoutUser)
+
+router.get('/test',(req,res) => {
+  console.log("works")
+  res.send("this is just test")
+})
 
 
 

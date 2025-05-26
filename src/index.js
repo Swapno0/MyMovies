@@ -7,6 +7,8 @@ dotenv.config({
 
 
 // Connecting with Database.
+console.log("🚀 Running updated server at", new Date().toLocaleTimeString());
+
 const Port = process.env.PORT || 8000;
 await connectDB()
 .then(()=>{
