@@ -121,12 +121,17 @@
     width: 24px;
 }
 .header .search_bar button input{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: medium;
     height: 24px;
     width: 170px;
     margin: 5px;
     background-color: rgba(0, 255, 255, 0);
     border: none;
     outline: none;
+
 }
 .header .search_bar button input{
     width: 300px;
@@ -136,5 +141,6 @@
 }
 .header .search_bar button input::placeholder{
     font-size: medium;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

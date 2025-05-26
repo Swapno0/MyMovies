@@ -69,7 +69,6 @@ const registerUser = (async (req, res) => {
     //validation again for required files.
     if (!avatarLocalPath) {
         req.session.error = "Avatar is required."
-        console.log(1)
         return res.redirect('/signup_page')
     }
 

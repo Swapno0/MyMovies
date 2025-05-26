@@ -26,6 +26,7 @@ router.get('/',(req,res) =>{
   }
 })
 router.get('/login_page',(req,res) =>{
+  console.log(1)
   const error = req.session.error
   delete req.session.error
   res.render("login_page",{error})

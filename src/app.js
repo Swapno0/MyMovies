@@ -43,9 +43,11 @@ app.use(session({
 /*<<<<<---------------------------------------------------------------------------------------------------------------------------------->>>>>*/
 // imports router from routes.
 import userRouter from "./routes/user.routes.js"
+import homeRouter from "./routes/user.routes.js"
 
 // Sends to appropriate router.
 app.use("/",userRouter)
+app.use("/home",homeRouter)
 
 /*<<<<<---------------------------------------------------------------------------------------------------------------------------------->>>>>*/
 
