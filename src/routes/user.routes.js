@@ -14,13 +14,11 @@ const router = Router()
 // })
 
 router.get('/',(req,res) =>{
-  console.log(3)
   if (req.session.isAuth == true) {
-    // console.log(req.session.userid)
-    // console.log(req.session.isAuth)
-    // console.log(req.session.loggedInUser)
-    // console.log(req.session.loggedInUser.rows)
     res.redirect('/home')
+  }
+  else if (req.session.isAdminAuth == true) {
+    res.redirect('/admin')
   }
   else{
     res.render("index")

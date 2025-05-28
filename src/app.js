@@ -44,17 +44,16 @@ app.use(session({
 // imports router from routes.
 import userRouter from "./routes/user.routes.js"
 import homeRouter from "./routes/home.routes.js"
+import adminRouter from "./routes/admin.routes.js"
 
 // Sends to appropriate router.
 app.use("/",userRouter)
 app.use("/home",homeRouter)
+app.use("/admin",adminRouter)
 
 /*<<<<<---------------------------------------------------------------------------------------------------------------------------------->>>>>*/
 
 
-app.get("/test/test2",(req,res) =>{
-  res.json({message:"ok"})
-})
 
 
 

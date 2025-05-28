@@ -1,6 +1,9 @@
 .flex{
     display: flex;
 }
+.flex_col{
+    flex-direction: column;
+}
 .justify{
     justify-content: center;
 }
@@ -59,4 +62,20 @@
 .asterisk{
     color: red;
     margin-right: 4px;
+}
+
+
+.anchor{
+   text-decoration: none;
+    color: rgb(182, 182, 182);
+    font-family: "Poppins", sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 13px;
+}
+
+
+
+.genreClicked{
+    background-color: #c75d5d !important;
 }

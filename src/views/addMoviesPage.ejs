@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addMoviesPage.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Add Movies</title>
+</head>
+
+<body>
+    <div class="heading">BASIC INFO</div>
+    <div class="container flex flex_col align">
+        
+        <div class="moviesName field">
+            <input type="text" id="moviesname" name="moviesName" placeholder="Movie Name" autocomplete="off">
+        </div>
+
+        <div class="releaseDate field">
+            <input type="text" id="releasedate" name="releaseDate" placeholder="Release Date" autocomplete="off">
+        </div>
+
+        <div class="duration field">
+            <input type="text" id="duration" name="duration" placeholder="Duration" autocomplete="off">
+        </div>
+
+        <div class="poster flex">
+            <label for="poster">Poster: </label>
+            <input type="file" id="poster" name="poster" placeholder="Poster" autocomplete="off">
+        </div>
+
+        <div class="coverPhoto ">
+            <label for="coverphoto">Cover Picture</label>
+            <input type="file" id="coverphoto" name="coverPhoto" placeholder="Cover Photo" autocomplete="off">
+        </div>
+
+        <div class="language field">
+            <input type="text" id="language" name="language" placeholder="Language" autocomplete="off">
+        </div>
+
+        <div class="country field">
+            <input type="text" id="country" name="country" placeholder="Country" autocomplete="off">
+        </div>
+
+        <div class="description field">
+            <textarea name="description" id="description" rows="6" cols="35" placeholder="Movie Description" autocomplete="off"></textarea>
+        </div>
+    </div>
+
+    <div class="heading">GENRE SELECTION</div>
+
+    <div class="genreContainer flex justify wrap">
+        <% for( let i = 0; i < allGenre.rows.length; i++ ) { %>
+            <div class="genreName cursor flex justify align">
+                <%= allGenre.rows[i].TITLE %>
+            </div>
+        <% } %>
+    </div>
+
+    <div class="heading"></div>
+
+
+
+
+    <script src="/script/addMoviesPage.js"></script>
+</body>
+
+</html>

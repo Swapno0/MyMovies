@@ -24,6 +24,8 @@ const registerUser = (async (req, res) => {
     // Taking some input from the frontEnd through req.body
     const { userName, email, bio, password } = req.body
 
+
+
     // Validating the inputs
     // if (userName === "" || userName.length > 15) {
     //     throw new ApiError(400, "userName is required")
@@ -120,8 +122,16 @@ const registerUser = (async (req, res) => {
 
 
 const loginUser = (async (req, res) => {
-    // Take username and password from body.
     const { userName, password } = req.body
+
+    // Check whether it is admin or not.
+    if (userName === "admin" && password === "admin") {
+        req.session.isAdminAuth = true;
+        return res.redirect("/admin")
+    }
+
+
+    // Take username and password from body.
     if (!userName) {
         req.session.error = "Username is required."
         return res.redirect('/login_page')

@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: black;
+}
+
+.container{
+    height: 100vh;
+    gap: 10px;
+}
+.container p{
+    color: white;
+    position: relative;
+    bottom: 50px;
+    font-size: large;
+}
+
+.container div{
+    height: 45px;
+    width: 120px;
+    background-color: rgb(17, 17, 17);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px rgba(31, 30, 30, 0.3);
+    transition: all 0.3s ease;
+}
+.container div:hover{
+    transform: translateY(-3px);
+    box-shadow: 6px 8px 8px rgba(31, 30, 30, 0.38);
+    color: white;
+
+}
