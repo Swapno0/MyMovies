@@ -12,3 +12,97 @@ body{
     background-color: black;
     color: white;
 }
+
+
+
+.container{
+    /* height: 100vh; */
+    position: relative;
+    top: 80px;
+}
+
+.container form .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 8px;
+    justify-content: flex-start;
+    margin: 10px;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+.container form .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: white;
+}
+.container .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.container form .avatar{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    margin: 20px 10px;
+}
+
+.container form .avatar input{
+    position: relative;
+    left: 5px;
+}
+
+
+.container form .bio{
+    border-radius: 8px;
+    justify-content: flex-start;
+    margin: 8px;
+    height: 90px;
+    /* width: 304px; */
+    position: relative;
+    left: 2px;
+}
+.container .bio textarea{
+    resize: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    color: azure;
+    height: 88px;
+    width: 100%;
+}
+
+.container .submit{
+    height: 35px;
+    width: 75px;
+    background-color: rgb(190, 190, 190);
+    position: relative;
+    top: 50px;
+    left: 125px;
+    border-radius: 8px;
+    color: black;
+}
+.container .submit:hover{
+    background-color: white;
+}
+.container .submit input{
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: medium;
+    font-weight: 700;
+    height: 100%;
+    width: 100%;
+}
+
+
+.container .message .success_message{
+    color: rgb(19, 225, 19);
+}

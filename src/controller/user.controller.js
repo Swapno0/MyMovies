@@ -62,7 +62,8 @@ const registerUser = (async (req, res) => {
 
 
     // we access and use files using multer.
-    const avatarLocalPath = req.files?.avatar?avatar[0]?.path:null
+    const avatarLocalPath = req.files?.avatar?req.files.avatar[0]?.path : null
+    // const avatarLocalPath = req.files?.avatar?avatar[0]?.path:null
 
     // const avatarLocalPath = req.files?.avatar && req.files.avatar[0]
     //     ? req.files.avatar[0].path
@@ -93,7 +94,7 @@ const registerUser = (async (req, res) => {
                             FROM MYMOVIES.USERS
                             WHERE MYMOVIES.USERS.userName = '${userName}'`
     const createdUser = await SQLexecuter(check_create_user)
-    if (!createdUser) {
+    if (createdUser.rows.length == 0) {
         req.session.error = "Something went wrong while registering the user"
         return res.redirect('/signup_page')
     }

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { getAllGenres } from "../controller/admin.controller.js";
+import { getAllGenres,addCelebs } from "../controller/admin.controller.js";
 
 const router = Router()
 
@@ -23,14 +23,32 @@ router.get('/addMoviesPage', async(req,res) =>{
   }
 })
 
+
+
 router.get('/addCelebsPage', async(req,res) =>{
   if (req.session.isAdminAuth) {
-    res.render('addCelebsPage')
+    const error = req.session.error
+    const msg = req.session.success_msg
+    delete req.session.error
+    delete req.session.success_msg
+    res.render('addCelebsPage',{error,msg})
   }
   else{
     res.redirect("/login_page")
   }
 })
+
+
+
+
+router.post('/addCelebs',
+  upload.fields([
+        {
+            name: "avatar",
+            maxCount: 1
+        }
+    ]), 
+  addCelebs)
 
 
 

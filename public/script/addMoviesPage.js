@@ -5,3 +5,4 @@ genre_arr.forEach(element => {
         element.classList.toggle("genreClicked")
     })
 })
+

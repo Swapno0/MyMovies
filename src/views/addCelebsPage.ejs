@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,51 @@
     <link rel="stylesheet" href="/css/util.css">
     <title>Add Celebs</title>
 </head>
+
 <body>
+    <a href="/admin" class="anchor"><div class="backButton flex align justify cursor">Back</div></a>
+    <div class="container flex flex_col align justify">
+        <div class="message flex justify align">
+            <% if (error) { %>
+                <div class="error_message"><span class="asterisk">*</span>
+                    <%= error %>
+                </div>
+                <% } %>
+                    <% if (msg) { %>
+                        <div class="success_message">*</span>
+                            <%= msg %>
+                        </div>
+                        <% } %>
+        </div>
+        <form action="/admin/addCelebs" method="post" enctype="multipart/form-data" autocomplete="off">
+            <div class="celebName field">
+                <input name="name" type="text" placeholder="Name" autocomplete="off">
+            </div>
+
+            <div class="bio field">
+                <textarea name="bio" id="" placeholder="Say something about the celebrity"></textarea>
+            </div>
+
+            <div class="country field">
+                <input name="country" type="text" placeholder="Country">
+            </div>
+
+            <div class="gender field">
+                <input name="gender" type="text" placeholder="Male / Female" autocomplete="off">
+            </div>
+
+            <div class="avatar flex align">
+                <label for="">Avatar: </label>
+                <input name="avatar" type="file">
+            </div>
+
+            <div class="submit flex align justify cursor">
+                <input type="submit" class="flex align justify align cursor" value="Add">
+            </div>
+        </form>
+    </div>
+
     
 </body>
+
 </html>
