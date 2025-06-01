@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { getAllGenres,addCelebs,getCastInfo } from "../controller/admin.controller.js";
+import { getAllGenres,addCelebs,getCastInfo, addMovies } from "../controller/admin.controller.js";
 
 const router = Router()
 
@@ -16,7 +16,9 @@ router.get("/",(req,res) => {
 router.get('/addMoviesPage', async(req,res) =>{
   if (req.session.isAdminAuth) {
     const allGenre = await getAllGenres();
-    res.render('addMoviesPage',{allGenre:allGenre})
+    const error = req.session.error
+    delete req.session.error
+    res.render('addMoviesPage',{allGenre:allGenre,error})
   }
   else{
     res.redirect("/login_page")
@@ -53,6 +55,22 @@ router.post('/addCelebs',
 
 
 router.post('/getCastInfo',getCastInfo)
+
+
+
+
+router.post('/addMovies',
+  upload.fields([
+        {
+            name: "poster",
+            maxCount: 1
+        },
+        {
+            name: "coverPhoto",
+            maxCount: 1
+        }
+    ]), 
+  addMovies)
 
 
 

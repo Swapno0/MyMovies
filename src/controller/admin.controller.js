@@ -6,6 +6,7 @@ import { uploader } from "../utils/cloudinary.js"
 import { ApiResponse } from '../utils/ApiResponse.js';
 import { SQLexecuter } from '../DB/database.js';
 import bcrypt from "bcrypt"
+import { json } from 'stream/consumers';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -123,6 +124,85 @@ const getCastInfo = (async (req,res) => {
 
 
 
+const addMovies = (async (req,res) => {
+    let {movieData,cast,genre,director} = req.body
+    const posterLocalPath = req.files?.poster?req.files.poster[0]?.path : null
+    const coverPhotoLocalPath = req.files?.coverPhoto?req.files.coverPhoto[0]?.path : null
+    movieData = JSON.parse(movieData)
+    cast = JSON.parse(cast)
+    genre = JSON.parse(genre)
+    director = JSON.parse(director)
+
+    //moviesName, releaseDate, duration, poster, coverPhoto, language, country, description 
+    //validating the inputs
+    if (movieData.moviesName === "") {
+        req.session.error = "Must add Movie Title"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    if (movieData.releaseDate === "") {
+        req.session.error = "Must add Release Date "
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    if (movieData.duration === "") {
+        req.session.error = "Must add Duration"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    if (movieData.language === "") {
+        req.session.error = "Must add Language"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    if (movieData.country === "") {
+        req.session.error = "Must add Country"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    if (movieData.description === "") {
+        req.session.error = "Must add Description"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+
+
+    //validation again for required files.
+    if (!posterLocalPath) {
+        req.session.error = "Poster is required."
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    if (!coverPhotoLocalPath) {
+        req.session.error = "Cover Photo is required."
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+    console.log(posterLocalPath)
+    console.log(coverPhotoLocalPath)
+
+
+    //upload files in cloudinary
+    const storedPoster = await uploader(posterLocalPath)
+    const storedCoverPhoto = await uploader(coverPhotoLocalPath)
+
+    // database code for movie database.
+    let get_movieId = `SELECT MYMOVIES.MOVIE_ID_SEQ.NEXTVAL FROM DUAL`
+    let movieID = await SQLexecuter(get_movieId)
+    movieID = movieID.rows[0].NEXTVAL
+    let movie_sql = `INSERT INTO MYMOVIES.MOVIE VALUES (${movieID},'${movieData.moviesName}','${movieData.duration}','${storedCoverPhoto.url}','${storedPoster.url}','${movieData.description}',TO_DATE('${movieData.releaseDate}','DD-MM-YYYY'),'${movieData.country}','${movieData.language}',DEFAULT)`
+    const movie = await SQLexecuter(movie_sql)
+    
+
+    // Check if movie is added to database.
+    let check_movie = `SELECT * FROM MYMOVIES.MOVIE
+                        WHERE MYMOVIES.MOVIE.ID = ${movieID} AND
+                        MYMOVIES.MOVIE.TITLE = '${movieData.moviesName}'`
+    const exist_movie = await SQLexecuter(check_movie)
+
+    // send appropriate response to appropriate page.
+    if (exist_movie.rows.length == 0) {
+        req.session.error = "The movie could not be added"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+
+    
+
+
+    return res.json({redirectURL:"/admin"})
+})
 
 
 
@@ -139,4 +219,5 @@ const getCastInfo = (async (req,res) => {
 
 
 
-export {getAllGenres,addCelebs,getCastInfo}
+
+export {getAllGenres,addCelebs,getCastInfo,addMovies}

@@ -12,6 +12,12 @@
 <body>
     <a href="/admin" class="anchor"><div class="backButton flex align justify cursor">Back</div></a>
 
+    <% if (error) { %>
+        <div class="errormsg">
+            <span class="asterisk">*</span><%= error %>
+        </div>
+    <% } %>
+
     <div class="heading">BASIC INFO</div>
     <div class="container flex flex_col align">
         
@@ -24,7 +30,7 @@
         </div>
 
         <div class="duration field">
-            <input type="text" id="duration" name="duration" placeholder="Duration" autocomplete="off">
+            <input type="text" id="duration" name="duration" placeholder="Duration in mins" autocomplete="off">
         </div>
 
         <div class="poster flex">
@@ -90,18 +96,22 @@
             <div class="celebSearchBox field flex align">
                 <input type="text" name="celebSearchBox" placeholder="Search Directors to add">
             </div>
+            <div class="celebSelectedBox">
+                
+            </div>
             <div class="celebShowBox">
                 <ul></ul>
             </div>
         </div>
+
+        <div class="celebAddedBox flex flex_col">
+
+        </div>
     </div>
 
 
-    <div class="heading">Award</div>
-    <div class="awardContainer flex">
-        <div class="inputBox">
-            
-        </div>
+    <div class="nextPage flex justify">
+        <div class="nextPageBtn cursor flex align justify">Add to Database</div>
     </div>
     
 
