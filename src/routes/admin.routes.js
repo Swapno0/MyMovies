@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { getAllGenres,addCelebs } from "../controller/admin.controller.js";
+import { getAllGenres,addCelebs,getCastInfo } from "../controller/admin.controller.js";
 
 const router = Router()
 
@@ -51,6 +51,8 @@ router.post('/addCelebs',
   addCelebs)
 
 
+
+router.post('/getCastInfo',getCastInfo)
 
 
 

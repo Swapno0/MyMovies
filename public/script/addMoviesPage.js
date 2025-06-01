@@ -1,8 +1,251 @@
+//moviesName, releaseDate, duration, poster, coverPhoto, language, country, description to req.body
+//genre_set for array of genre
+//cast_set for arrays of cast.
+
+
+
+
+
+
+
+
 // changes the color when genre is clicked.
 let genre_arr = document.querySelectorAll(".genreName")
+let genre_set = new Set() 
 genre_arr.forEach(element => {
-    element.addEventListener("click", () =>{
+    element.addEventListener("click", () => {
         element.classList.toggle("genreClicked")
+        genre_set.has(element.innerText) ? genre_set.delete(element.innerText) : genre_set.add(element.innerText)
     })
 })
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Showing dynamic info of the cast.
+
+document.getElementsByName("celebSearchBox")[0].addEventListener("input", async () => {
+    const input = document.getElementsByName("celebSearchBox")[0].value
+    const response = await fetch(`/admin/getCastInfo`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input: input })
+    })
+    const castInfo = await response.json()
+
+    // Now show it in frontend.
+    let content = ""
+    if (input != "") {
+        for (let index = 0; index < castInfo.rows.length; index++) {
+            content += `
+            <li class="flex align cursor">
+            <img class="celebAvatar" src="${castInfo.rows[index].AVATAR}" width="50px" height="50px">
+            <div class="celebName">${castInfo.rows[index].NAME}</div>
+            <div class="celebId" hidden>${castInfo.rows[index].ID}</div>
+            </li>`
+        }
+    }
+    document.querySelector(".celebShowBox ul").innerHTML = content
+
+})
+
+
+
+// Adding functionality to the clicking of the celebShowBoxes and adding the cast.
+let cast_set = new Set()
+function isEqual(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+let equal = false
+
+
+document.querySelector(".celebShowBox ul").addEventListener("click", (e) => {
+    if (e.target && e.target.tagName === "LI") {
+        const li = e.target;
+
+        document.querySelector(".celebSelectedBox").innerHTML = `
+        <div class="flex align cursor">
+        ${li.innerHTML}
+        </div>
+        <div class = "add flex align cursor">Add</div>
+        `
+
+        document.querySelector(".celebShowBox ul").innerHTML = ""
+
+        document.querySelector(".celebSelectedBox .add").addEventListener("click", () => {
+            let celebID = document.querySelector(".celebSelectedBox .celebId").innerText
+            let celebName = document.querySelector(".celebSelectedBox .celebName").innerText
+            let celebAvatar = document.querySelector(".celebSelectedBox img").src
+            let role = document.querySelector(".role").value
+            let castData = ({ celebID: celebID, role: role, celebName: celebName, celebAvatar: celebAvatar })
+
+            for (const data of cast_set) {
+                if (isEqual(data, castData)) {
+                    equal = true
+                }
+            }
+            if (equal != true) {
+                cast_set.add(castData)
+            }
+            console.log(cast_set)
+            document.querySelector(".celebSelectedBox").innerHTML = ""
+            document.getElementsByName("celebSearchBox")[0].value = ""
+            document.getElementsByName("roleName")[0].value = ""
+            equal = false
+            let castContent = ""
+            for (let item of cast_set) {
+                castContent += `
+            <div class="flex align cursor">
+                <div hidden class="celebID">${item.celebID}</div>
+                <img src="${item.celebAvatar}" height=50px width=50px>
+                <div class="celebName">${item.celebName}</div>
+                <div class="roleName">${item.role}</div>
+                <img class="cross_btn" src="/images/icons/cross_icon.svg" alt="" height=30px width=30px>
+            </div>`
+            }
+            console.log(castContent)
+            document.querySelector(".castContainer .celebAddedBox").innerHTML = castContent
+
+
+
+
+
+            document.querySelectorAll(".celebAddedBox .cross_btn").forEach(element => {
+                console.log(300)
+                element.addEventListener("click", (e) => {
+                    console.log(100)
+                    let div = element.parentElement
+                    let id = div.getElementsByClassName("celebID")[0].innerText
+                    let role = div.getElementsByClassName("roleName")[0].innerText
+                    for (let item of cast_set) {
+                        if (id === item.celebID && role === item.role) {
+                            cast_set.delete(item)
+                        }
+                    }
+
+
+                    let castContent = ""
+                    for (let item of cast_set) {
+                        castContent += `
+                        <div class="flex align cursor">
+                            <div hidden class="celebID">${item.celebID}</div>
+                            <img src="${item.celebAvatar}" height=50px width=50px>
+                            <div class="celebName">${item.celebName}</div>
+                            <div class="roleName">${item.role}</div>
+                            <img class="cross_btn" src="/images/icons/cross_icon.svg" alt="" height=30px width=30px>
+                        </div>`
+                    }
+                    console.log(castContent)
+                    div.querySelector(".celebID").hidden = true
+                    div.querySelector("img").hidden = true
+                    div.querySelector(".celebName").hidden = true
+                    div.querySelector(".roleName").hidden = true
+                    div.querySelector(".cross_btn").hidden = true
+                    div.style.height = "0px"
+                    div.style.padding= "0px 5px"
+                    console.log(200)
+                })
+            })
+        })
+
+
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Showing dynamic info of the directors
+
+document.getElementsByName("celebSearchBox")[1].addEventListener("input", async () => {
+    const input = document.getElementsByName("celebSearchBox")[1].value
+    const response = await fetch(`/admin/getCastInfo`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input: input })
+    })
+    const castInfo = await response.json()
+
+    // Now show it in frontend.
+    let content = ""
+    if (input != "") {
+        for (let index = 0; index < castInfo.rows.length; index++) {
+            content += `
+            <li class="flex align cursor">
+            <img class="celebAvatar" src="${castInfo.rows[index].AVATAR}" width="50px" height="50px">
+            <div class="celebName">${castInfo.rows[index].NAME}</div>
+            <div class="celebId">${castInfo.rows[index].ID}</div>
+            </li>`
+        }
+    }
+    document.querySelectorAll(".celebShowBox ul")[1].innerHTML = content
+
+})
+
+
+// Adding functionality to clicking on celebShow and adding them to director cast.

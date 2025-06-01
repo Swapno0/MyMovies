@@ -102,6 +102,20 @@ const addCelebs = (async (req,res) => {
 
 
 
+const getCastInfo = (async (req,res) => {
+    const {input} = req.body
+    if(input == "") res.send({})
+    else{
+    let sql = `SELECT * FROM MYMOVIES.CELEB
+                WHERE MYMOVIES.CELEB.NAME LIKE '${input}%'`
+    let castInfo = await SQLexecuter(sql)
+    // if (castInfo.rows.length == 0) {
+    //     sql = `SELECT * FROM MYMOVIES.CELEB
+    //             WHERE MYMOVIES.CELEB.NAME LIKE '%${input}%'`
+    //     castInfo = await SQLexecuter(sql)
+    // }
+    res.send(castInfo)}
+})
 
 
 
@@ -125,5 +139,4 @@ const addCelebs = (async (req,res) => {
 
 
 
-
-export {getAllGenres,addCelebs}
+export {getAllGenres,addCelebs,getCastInfo}

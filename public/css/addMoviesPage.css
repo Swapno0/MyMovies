@@ -112,3 +112,214 @@ body{
     box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
 }
 
+
+
+
+
+
+.castContainer{
+    height: 400px;
+    width: 100%;
+    justify-content: space-between;
+}
+.castContainer .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+.castContainer .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+.castContainer .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: azure;
+}
+
+.castContainer .celebShowBox{
+    position: relative;
+    bottom: 65px;
+    left: 58px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.castContainer .celebShowBox li{
+    background-image:linear-gradient(to top right,rgb(181, 73, 73),rgb(199, 93, 93));
+    gap: 10px;
+    height: 60px;
+    width: 301px;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    
+}
+.castContainer .celebShowBox li img{
+    border-radius: 50px;
+}
+
+.castContainer .celebSelectedBox{
+    position: relative;
+    left: 58px;
+    top: 45px;
+    height: 60px;
+}
+.castContainer .celebSelectedBox>div{
+    background-color: rgb(255, 94, 94);
+    gap: 10px;
+    height: 60px;
+    width: 301px;
+    justify-content: space-between;
+    padding: 5px;
+    border-radius: 5px;
+}
+.castContainer .celebSelectedBox>div img{
+    border-radius: 50px;
+}
+
+.castContainer .celebSelectedBox .add{
+    height: 40px;
+    width: 60px;
+    position: relative;
+    left: 120px;
+    top: 4px;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.castContainer .celebAddedBox{
+    position: relative;
+    height: 300px;
+    width:400px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    top: 55px;
+    right: 150px;
+}
+.castContainer .celebAddedBox>div{
+    display: flex;
+    gap: 10px;
+    background-image:linear-gradient(to top right,rgb(196, 41, 48),rgb(189, 70, 76));
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 1px;
+}
+.castContainer .celebAddedBox>div img{
+    border-radius: 50px;
+}
+
+
+
+
+
+.directorContainer{
+    height: 300px;
+    width: 100%;
+    background-color: blue;
+}
+.directorContainer .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+.directorContainer .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+.directorContainer .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: azure;
+}
+
+.directorContainer .celebShowBox{
+    position: relative;
+    top: 45px;
+    left: 60px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.directorContainer .celebShowBox ul li{
+    background-color: brown;
+    gap: 10px;
+    height: 60px;
+    width: 298px;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 10px 0px;
+}
+
+
+
+
+.awardContainer{
+    height: 500px;
+    width: 100%;
+    background-color: blue;
+}
+.awardContainer .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    position: relative;
+    top: 50px;
+    left: 50px;
+}
+.awardContainer .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+.awardContainer .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: azure;
+}
