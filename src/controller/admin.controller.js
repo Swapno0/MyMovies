@@ -132,6 +132,9 @@ const addMovies = (async (req,res) => {
     cast = JSON.parse(cast)
     genre = JSON.parse(genre)
     director = JSON.parse(director)
+    console.log(cast)
+    console.log(genre)
+    console.log(director)
 
     //moviesName, releaseDate, duration, poster, coverPhoto, language, country, description 
     //validating the inputs
@@ -170,8 +173,11 @@ const addMovies = (async (req,res) => {
         req.session.error = "Cover Photo is required."
         return res.json({redirectURL:"/admin/addMoviesPage"})
     }
-    console.log(posterLocalPath)
-    console.log(coverPhotoLocalPath)
+    if (posterLocalPath === coverPhotoLocalPath) {
+        req.session.error = "Poster and CoverPhoto can not have same name"
+        return res.json({redirectURL:"/admin/addMoviesPage"})
+    }
+
 
 
     //upload files in cloudinary
@@ -184,24 +190,42 @@ const addMovies = (async (req,res) => {
     movieID = movieID.rows[0].NEXTVAL
     let movie_sql = `INSERT INTO MYMOVIES.MOVIE VALUES (${movieID},'${movieData.moviesName}','${movieData.duration}','${storedCoverPhoto.url}','${storedPoster.url}','${movieData.description}',TO_DATE('${movieData.releaseDate}','DD-MM-YYYY'),'${movieData.country}','${movieData.language}',DEFAULT)`
     const movie = await SQLexecuter(movie_sql)
-    
 
-    // Check if movie is added to database.
     let check_movie = `SELECT * FROM MYMOVIES.MOVIE
                         WHERE MYMOVIES.MOVIE.ID = ${movieID} AND
                         MYMOVIES.MOVIE.TITLE = '${movieData.moviesName}'`
     const exist_movie = await SQLexecuter(check_movie)
 
-    // send appropriate response to appropriate page.
     if (exist_movie.rows.length == 0) {
         req.session.error = "The movie could not be added"
         return res.json({redirectURL:"/admin/addMoviesPage"})
     }
 
+    // database code for movie genre.
+    for (let index = 0; index < genre.length; index++) {
+        let genre_sql = `INSERT INTO MYMOVIES.MOVIE_GENRE VALUES(${movieID},${genre[index]})`
+        const added_genre = await SQLexecuter(genre_sql)
+    }
+    
+
+    // database code for cast.
+    for (let index = 0; index < cast.length; index++) {
+        let cast_sql = `INSERT INTO MYMOVIES.MOVIE_CELEB VALUES (${movieID},${cast[index].celebID},'Actor','${cast[index].role}')`
+        let added_cast = await SQLexecuter(cast_sql)
+    }
+
+    // database code for director
+
+    for (let index = 0; index < director.length; index++) {
+        let director_sql = `INSERT INTO MYMOVIES.MOVIE_CELEB VALUES (${movieID},${director[index].celebID},'Director','None')`
+        let added_director = await SQLexecuter(director_sql)
+    }
+    
+
     
 
 
-    return res.json({redirectURL:"/admin"})
+    return res.json({redirectURL:"/admin/addAwardsPage"})
 })
 
 

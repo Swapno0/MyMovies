@@ -41,6 +41,20 @@ router.get('/addCelebsPage', async(req,res) =>{
 })
 
 
+router.get('/addAwardsPage', async(req,res) =>{
+  if (req.session.isAdminAuth) {
+    const error = req.session.error
+    const msg = req.session.success_msg
+    delete req.session.error
+    delete req.session.success_msg
+    res.render('addAwardsPage',{error,msg})
+  }
+  else{
+    res.redirect("/login_page")
+  }
+})
+
+
 
 
 router.post('/addCelebs',

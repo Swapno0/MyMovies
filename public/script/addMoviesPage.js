@@ -18,7 +18,7 @@ let genre_arr = document.querySelectorAll(".genreName")
 genre_arr.forEach(element => {
     element.addEventListener("click", () => {
         element.classList.toggle("genreClicked")
-        genre_set.has(element.innerText) ? genre_set.delete(element.innerText) : genre_set.add(element.innerText)
+        genre_set.has(element.querySelector(".genreID").innerText) ? genre_set.delete(element.querySelector(".genreID").innerText) : genre_set.add(element.querySelector(".genreID").innerText)
     })
 })
 

@@ -61,6 +61,7 @@
     <div class="genreContainer flex justify wrap">
         <% for( let i = 0; i < allGenre.rows.length; i++ ) { %>
             <div class="genreName cursor flex justify align">
+                <div class="genreID" hidden><%= allGenre.rows[i].ID %></div>
                 <%= allGenre.rows[i].TITLE %>
             </div>
         <% } %>
