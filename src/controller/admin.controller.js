@@ -18,6 +18,13 @@ const getAllGenres = (async (req,res) => {
     return allGenre;
 })
 
+const getAllCastAwards = (async (req,res) => {
+    let sql = `SELECT ID, (TITLE || ' for ' || AWARDDESCRIPTION) AS AWARD_NAME FROM MYMOVIES.AWARD
+            WHERE MYMOVIES.AWARD.AWARDRECIEVER = 'Actor'`
+    const castAwards = await SQLexecuter(sql)
+    return castAwards
+})
+
 
 
 
@@ -244,4 +251,4 @@ const addMovies = (async (req,res) => {
 
 
 
-export {getAllGenres,addCelebs,getCastInfo,addMovies}
+export {getAllGenres,getAllCastAwards,addCelebs,getCastInfo,addMovies}

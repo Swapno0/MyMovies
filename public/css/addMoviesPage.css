@@ -356,6 +356,61 @@ body{
 
 
 
+.castAwardContainer{
+    height: 485px;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.castAwardContainer .celebAddedBox_a{
+    height: 250px;
+    width: 400px;
+    background-color: brown;
+    margin-left: 70px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+
+}
+.castAwardContainer .celebAddedBox_a .data {
+    justify-content: space-between;
+    width: 400px;
+    height: 60px;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 1px;
+    background-image:linear-gradient(to top right,rgb(196, 41, 48),rgb(189, 70, 76));
+}
+.castAwardContainer .celebAddedBox_a .data img{
+    border-radius: 50px;
+}
+
+.castAwardContainer .awardNamesContainer .wrapper{
+    height: 55px;
+    width: 205px;
+    background-color: chocolate;
+    margin: 5px 0;
+    
+}
+
+.castAwardContainer .addBtn{
+    height: 50px;
+    width: 100px;
+    background-color: crimson;
+}
+
+.castAwardContainer .celebAwardAddedBox{
+    height: 250px;
+    width: 400px;
+    background-color: brown;
+    /* margin-left: 70px; */
+    overflow-y: scroll;
+    overflow-x: scroll;
+    margin-right: 70px;
+}
+
+
 
 
 .nextPage .nextPageBtn{

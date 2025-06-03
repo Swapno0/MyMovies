@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { getAllGenres,addCelebs,getCastInfo, addMovies } from "../controller/admin.controller.js";
+import { getAllGenres,addCelebs,getCastInfo, addMovies, getAllCastAwards } from "../controller/admin.controller.js";
 
 const router = Router()
 
@@ -16,9 +16,11 @@ router.get("/",(req,res) => {
 router.get('/addMoviesPage', async(req,res) =>{
   if (req.session.isAdminAuth) {
     const allGenre = await getAllGenres();
+    const castAwards = await getAllCastAwards()
     const error = req.session.error
     delete req.session.error
-    res.render('addMoviesPage',{allGenre:allGenre,error})
+    console.log(castAwards)
+    res.render('addMoviesPage',{allGenre:allGenre,error,castAwards})
   }
   else{
     res.redirect("/login_page")
@@ -41,19 +43,20 @@ router.get('/addCelebsPage', async(req,res) =>{
 })
 
 
-router.get('/addAwardsPage', async(req,res) =>{
+
+
+router.get('/updateMoviesPage', async(req,res) =>{
   if (req.session.isAdminAuth) {
     const error = req.session.error
     const msg = req.session.success_msg
     delete req.session.error
     delete req.session.success_msg
-    res.render('addAwardsPage',{error,msg})
+    res.render('updateMoviesPage',{error,msg})
   }
   else{
     res.redirect("/login_page")
   }
 })
-
 
 
 

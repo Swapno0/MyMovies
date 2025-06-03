@@ -2,9 +2,9 @@
 //genre_set for array of genre
 //cast_set for arrays of cast.
 //director_set for arrays of director.
-let genre_set = new Set() 
+let genre_set = new Set()
 let cast_set = new Set()
-let director_set= new Set()
+let director_set = new Set()
 
 
 
@@ -168,7 +168,7 @@ document.querySelector(".castContainer .celebShowBox ul").addEventListener("clic
                     div.querySelector(".roleName").hidden = true
                     div.querySelector(".cross_btn").hidden = true
                     div.style.height = "0px"
-                    div.style.padding= "0px 5px"
+                    div.style.padding = "0px 5px"
                     console.log(200)
                 })
             })
@@ -331,7 +331,7 @@ document.querySelector(".directorContainer .celebShowBox ul").addEventListener("
                     div.querySelector(".celebName").hidden = true
                     div.querySelector(".cross_btn").hidden = true
                     div.style.height = "0px"
-                    div.style.padding= "0px 5px"
+                    div.style.padding = "0px 5px"
                     console.log(200)
                 })
             })
@@ -345,6 +345,24 @@ document.querySelector(".directorContainer .celebShowBox ul").addEventListener("
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Adding functionality to awardContainer section.
+document.querySelector(".castAwardContainer")
 
 
 
@@ -386,7 +404,7 @@ document.querySelector(".directorContainer .celebShowBox ul").addEventListener("
 
 
 // Adding Functionality to add to database button.
-document.querySelector(".nextPageBtn").addEventListener("click",  async() => {
+document.querySelector(".nextPageBtn").addEventListener("click", async () => {
     //moviesName, releaseDate, duration, poster, coverPhoto, language, country, description 
     let moviesName = document.getElementsByName("moviesName")[0].value
     let releaseDate = document.getElementsByName("releaseDate")[0].value
@@ -396,18 +414,18 @@ document.querySelector(".nextPageBtn").addEventListener("click",  async() => {
     let description = document.getElementsByName("description")[0].value
     let poster = document.getElementsByName("poster")[0].files[0]
     let coverPhoto = document.getElementsByName("coverPhoto")[0].files[0]
-    let movieData = {moviesName,releaseDate,duration,language,country,description}
+    let movieData = { moviesName, releaseDate, duration, language, country, description }
 
     let allData = new FormData()
-    allData.append('poster',poster)
-    allData.append('coverPhoto',coverPhoto)
-    allData.append('movieData',JSON.stringify(movieData))
-    allData.append('cast',JSON.stringify(Array.from(cast_set)))
-    allData.append('genre',JSON.stringify(Array.from(genre_set)))
-    allData.append('director',JSON.stringify(Array.from(director_set)))
+    allData.append('poster', poster)
+    allData.append('coverPhoto', coverPhoto)
+    allData.append('movieData', JSON.stringify(movieData))
+    allData.append('cast', JSON.stringify(Array.from(cast_set)))
+    allData.append('genre', JSON.stringify(Array.from(genre_set)))
+    allData.append('director', JSON.stringify(Array.from(director_set)))
 
 
-    const response = await fetch("/admin/addMovies",{
+    const response = await fetch("/admin/addMovies", {
         method: "POST",
         body: allData
     })
@@ -415,4 +433,7 @@ document.querySelector(".nextPageBtn").addEventListener("click",  async() => {
     // console.log(data)
     window.location.href = data.redirectURL
 })
+
+
+
 
