@@ -1,0 +1,282 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+
+body{
+    background-color: black;
+    color: white;
+    
+}
+.heading{
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.container0{
+    justify-content: space-between;
+}
+.container0 .deleteCelebButton{
+    height: 40px;
+    width: 150px;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    margin-right: 40px;
+    margin-top: 40px;
+    position: relative;
+    border-radius: 5px;
+}
+.container0 .deleteCelebButton:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+    background-color: rgb(145, 19, 19);
+}
+
+
+.container1{
+    /* width: 100%; */
+    border: 1px solid white;
+    margin: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container1 .basicInfo{
+    width: 655px;
+    padding: 20px;
+    /* background-color: blue; */
+}
+.container1 .basicInfo .celebName{
+    font-size:xx-large;
+    font-family: 'Poppins';
+    font-weight: 500;
+    padding: 20px 0;
+    
+}
+.container1 .basicInfo .celebBio{
+    padding: 20px 0;
+    max-height: 130px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+
+
+.container1 .basicInfoUpdateBox{
+    position: relative;
+    right: 50px;
+}
+
+.container1 .basicInfoUpdateBox .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+.container1 .basicInfoUpdateBox .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+.container1 .basicInfoUpdateBox .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: azure;
+}
+
+.container1 .basicInfoUpdateBox .celebBio{
+    border-radius: 8px;
+    justify-content: flex-start;
+    margin: 8px;
+    height: 90px;
+}
+.container1 .basicInfoUpdateBox .celebBio textarea{
+    resize: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    color: azure;
+}
+
+.container1 .basicInfoUpdateBox .avatar{
+    background-color: black;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    left: 10px;
+}
+.container1 .basicInfoUpdateBox .avatar input{
+    margin-left: 7px;
+}
+
+.container2{
+    border: 1px solid white;
+    margin: 15px 30px;
+    padding: 20px;
+    height: 1300px;
+}
+.container2 .awardContainer{
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.container2 .awardContainer .awardInfo{
+    gap: 15px;
+    margin: 15px 0;
+    margin-right: 20px;
+    background-color: rgb(38, 38, 38);
+    padding-right: 10px;
+    width: 350px;
+    height: 60px;
+    justify-content: space-between;
+    padding-left: 25px;
+}
+
+
+.container2 .awardInfoUpdateContainer .awardUpdateContainer {
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    padding-right: 10px;
+    width: 350px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+
+.container2 .awardInfoUpdateContainer .awardUpdateContainer:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.container2 .movieBox input{
+    background-color: rgb(18, 18, 18);
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 230px;
+    margin-bottom: 5px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+    margin: 30px 10px;
+}
+.container2 .movieBox input:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.container2 .movieBox .movieShowBox{
+    max-height: 250px;
+    width: 270px;
+    /* background-color: blue; */
+    overflow-y: scroll;
+}
+.container2 .movieBox .movieShowBox .movieInfo{
+    justify-content: space-between;
+    padding: 5px;
+    background-image:linear-gradient(to right,rgb(181, 73, 73),rgb(199, 93, 93));
+    margin: 5px 0;
+    border-radius: 6px;
+}
+
+.container2 .options{
+    margin-top: 80px;
+}
+
+
+.container2 .movieSelectedBox .selectedMovieInfo{
+    justify-content: space-between;
+    padding: 5px;
+    background-image:linear-gradient(to right,rgb(181, 73, 73),rgb(199, 93, 93));
+    margin: 5px 0;
+    border-radius: 6px;
+    width: 300px;
+    margin-right: 50px;
+}
+
+.container2 .awardSelectedBox .selectedAwardInfo{
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    padding-right: 10px;
+    width: 350px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+
+.container2 .options .recieveDateBox input{
+    background-color: rgb(18, 18, 18);
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 230px;
+    margin-bottom: 5px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+    margin: 30px 10px;
+}
+.container2 .options .recieveDateBox input:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.container2 .options .addAwardBtn{
+    height: 40px;
+    width: 80px;
+    background-color: rgb(18, 18, 18);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+}
+.container2 .options .addAwardBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+
+.updateBtn{
+    height: 45px;
+    width: 150px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+    padding: 5px;
+    margin: 20px;
+    background-color: rgb(18, 18, 18);
+}
+.updateBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}

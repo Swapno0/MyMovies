@@ -98,13 +98,6 @@ document.querySelectorAll(".genreUpdateContainer .genreBox").forEach(box => {
             })
         })
     })
-
-
-
-
-
-
-
 })
 
 

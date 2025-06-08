@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/updateCelebsPage.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container0 flex align">
+        <a class="anchor" href="/admin/updateCelebsHomePage"><div class="backButton flex align justify cursor">Back</div></a>
+        <div class="deleteCelebButton flex align justify cursor">Delete Celeb</div>
+    </div>
+
+    <div class="container1 flex align">
+        <div class="basicInfo">
+            <div class="celebID" hidden><%= celebInfo.rows[0].ID %></div>
+            <div class="celebName"><%= celebInfo.rows[0].NAME %></div>
+            <div class="celebType"></div>
+            <img src="<%= celebInfo.rows[0].AVATAR %>" alt="" height="350px">
+            <div class="celebBio"><%= celebInfo.rows[0].BIO %></div>
+            <div class="celebCountry">Country : <%= celebInfo.rows[0].COUNTRY %></div>
+            <div class="celebGender">Gender : <%= celebInfo.rows[0].GENDER %></div>
+        </div>
+
+        <div class="basicInfoUpdateBox">
+            <div class="celebName field">
+                <input type="text" name="celebName" placeholder="Celeb Name" autocomplete="off">
+            </div>
+
+            <div class="avatar flex">
+                <label for="avatar">Avatar: </label>
+                <input type="file" id="avatar" name="avatar" placeholder="Avatar" autocomplete="off">
+            </div>
+
+            <div class="celebBio field">
+                <textarea name="celebBio" id="celebBio" rows="6" cols="35" placeholder="Bio" autocomplete="off"></textarea>
+            </div>
+
+            <div class="country field">
+                <input type="text" id="country" name="country" placeholder="Country" autocomplete="off">
+            </div>
+
+            <div class="gender field">
+                <input type="text" id="gender" name="gender" placeholder="Male / Female" autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <div class="heading">Celeb Award</div>
+    <div class="container2">
+        <div class="awardInfoContainer flex align wrap">
+            <% for( let index = 0; index < celebAwardInfo.rows.length; index++ ) { %>
+                <div class="awardContainer flex align">
+                    <div class="awardInfo flex align">
+                        <div class="id_name_date">
+                            <div class="movieID" hidden><%= celebAwardInfo.rows[index].MOVIEID %></div>
+                            <div class="awardID" hidden><%= celebAwardInfo.rows[index].ID %></div>
+                            <div class="awardName"><%= celebAwardInfo.rows[index].AWARD_NAME %></div>
+                            <div class="recieveDate"><%= celebAwardInfo.rows[index].RECIEVEDATE %></div>
+                        </div>
+                        <div class="cross_btn cursor"><img src="/images/icons/cross_icon.svg" alt=""></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+
+        <div class="awardInfoUpdateContainer flex flex_col align wrap justify">
+            <div class="anotherBox">
+                <% for( let index = 0; index < celebAwards.rows.length; index++ ) { %>
+                    <div class="awardUpdateContainer flex align justify cursor">
+                        <div class="awardUpdateInfo flex align justify">
+                            <div class="awardID" hidden><%= celebAwards.rows[index].ID %></div>
+                            <div class="awardName"><%= celebAwards.rows[index].AWARD_NAME %></div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <div class="movieBox">
+                <div class="movieSearchBox flex">
+                    <input type="text" class="movieSearchBox">
+                </div>
+                <div class="movieShowBox">
+                    <% for( let index = 0; index < allMovies.rows.length; index++ ) { %>
+                    <div class="movieInfo flex align cursor">
+                        <div class="movieID" hidden><%= allMovies.rows[index].ID %></div>
+                        <img src="<%= allMovies.rows[index].POSTER %>" alt="" width="50px">
+                        <div class="movieName"><%= allMovies.rows[index].TITLE %></div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="options flex align justify">
+                <div class="movieSelectedBox">
+    
+                </div>
+                <div class="awardSelectedBox">
+    
+                </div>
+                <div class="recieveDateBox">
+                    <input type="text" class="recieveDateBox">
+                </div>
+                <div class="addAwardBtn flex align justify cursor">Add</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="updateDiv flex align justify">
+        <div class="updateBtn flex align justify cursor">Update Celeb</div>
+    </div>
+
+
+
+
+    <script src="/script/updateCelebsPage.js"></script>
+</body>
+</html>

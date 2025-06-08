@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/updateCelebsHomePage.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/admin" class="anchor"><div class="backButton flex align justify cursor">Back</div></a>
+
+    <div class="searchBox flex justify align">
+        <input type="text" name="searchBox" class="searchBox">
+    </div>
+
+    <div class="container flex wrap justify">
+        <% for( let index = 0; index < allCasts.rows.length; index++ ) { %>
+            <a class="anchor" href="/admin/updateCelebsPage/?ID=<%= allCasts.rows[index].ID %>">
+            <div class="castBox flex align flex_col justify cursor">
+                <div class="castID" hidden><%= allCasts.rows[index].ID %></div>
+                <img class="castAvatar" src="<%= allCasts.rows[index].AVATAR %>" alt="" width="150px" height="200px">
+                <div class="castName flex wrap"><%= allCasts.rows[index].NAME %></div>
+            </div>
+            </a>
+        <% } %>
+    </div>
+</body>
+</html>

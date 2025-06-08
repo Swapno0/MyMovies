@@ -39,6 +39,25 @@ const getAllCastAwards = (async (req, res) => {
     return castAwards
 })
 
+const getAllCelebsAwards = (async (req, res) => {
+    let sql = `SELECT ID, (TITLE || ' for ' || AWARDDESCRIPTION) AS AWARD_NAME FROM MYMOVIES.AWARD
+            WHERE MYMOVIES.AWARD.AWARDRECIEVER = 'Actor' OR
+            MYMOVIES.AWARD.AWARDRECIEVER = 'Director'`
+    const celebAwards = await SQLexecuter(sql)
+
+    return celebAwards
+})
+
+const getCelebAwardInfo = (async (req,res) => {
+    let celeb_id = req.query.ID
+    let sql = `SELECT (A.TITLE || ' for ' || A.AWARDDESCRIPTION) AS AWARD_NAME,A.ID,C.RECIEVEDATE,C.MOVIEID
+                FROM MYMOVIES.CELEB_AWARD C JOIN MYMOVIES.AWARD A ON C.AWARDID = A.ID
+                WHERE
+                C.CELEBID = ${celeb_id}`
+    const celebAwardInfo = await SQLexecuter(sql)
+    return celebAwardInfo
+})
+
 const getAllMovies = (async (req, res) => {
     let sql = `SELECT * FROM MYMOVIES.MOVIE`
     const allMovies = await SQLexecuter(sql)
@@ -61,6 +80,14 @@ const getALLCastInfo = (async (req, res) => {
     let sql = `SELECT * FROM MYMOVIES.CELEB`
     const allCastInfo = await SQLexecuter(sql)
     return allCastInfo
+})
+
+const getCelebInfo = (async(req,res) => {
+    let celebID = req.query.ID
+    let sql = `SELECT * FROM MYMOVIES.CELEB
+                WHERE MYMOVIES.CELEB.ID = ${celebID}`
+    let celebInfo = await SQLexecuter(sql)
+    return celebInfo
 })
 
 const getMovieCastInfo = (async (req, res) => {
@@ -421,6 +448,7 @@ const updateMovie = (async (req, res) => {
     }
     }
 
+    //updating the awards
     if (movieAward) {
         let deleteMovieAward_sql = `DELETE FROM MYMOVIES.MOVIE_AWARD
                                     WHERE MYMOVIES.MOVIE_AWARD.MOVIEID = ${movieData.movieID}`
@@ -449,6 +477,93 @@ const deleteMovie = (async (req,res) =>{
 
 
 
+const updateCeleb = (async(req,res) => {
+    let {celebData,celebAward} = req.body
+    let avatarLocalPath = req.files?.avatar ? req.files.avatar[0]?.path : null
+
+    celebData = JSON.parse(celebData)
+    celebAward = JSON.parse(celebAward)
+    
+    // console.log(celebData)
+    // console.log(celebAward)
+    // console.log(avatarLocalPath)
+    // console.log(344)
+
+    // updating basic celeb info
+    if (celebData.changed_name) {
+        let sql = `UPDATE MYMOVIES.CELEB
+                    SET MYMOVIES.CELEB.NAME = '${celebData.changed_name}'
+                    WHERE MYMOVIES.CELEB.ID = ${celebData.celebID}`
+        let changedName = await SQLexecuter(sql)
+    }
+    if (celebData.changed_bio) {
+        celebData.changed_bio = celebData.changed_bio.replace(/'/g, "''")
+        let sql = `UPDATE MYMOVIES.CELEB
+                    SET MYMOVIES.CELEB.BIO = '${celebData.changed_bio}'
+                    WHERE MYMOVIES.CELEB.ID = ${celebData.celebID}`
+        let changedBio = await SQLexecuter(sql)
+    }
+    if (celebData.changed_country) {
+        let sql = `UPDATE MYMOVIES.CELEB
+                    SET MYMOVIES.CELEB.COUNTRY = '${celebData.changed_country}'
+                    WHERE MYMOVIES.CELEB.ID = ${celebData.celebID}`
+        let changedCountry = await SQLexecuter(sql)
+    }
+    if (celebData.changed_gender) {
+        let sql = `UPDATE MYMOVIES.CELEB
+                    SET MYMOVIES.CELEB.GENDER = '${celebData.changed_gender}'
+                    WHERE MYMOVIES.CELEB.ID = ${celebData.celebID}`
+        let changedGender = await SQLexecuter(sql)
+    }
+    if (avatarLocalPath) {
+        let storedAvatar = await uploader(avatarLocalPath)
+        let sql = `UPDATE MYMOVIES.CELEB
+                SET MYMOVIES.CELEB.AVATAR = '${storedAvatar.url}'
+                WHERE MYMOVIES.CELEB.ID = ${celebData.celebID}`
+        let changedAvatar = SQLexecuter(sql)
+    }
+
+    // Updating the awards
+    if (celebAward) {
+        let deleteCelebAward_sql = `DELETE FROM MYMOVIES.CELEB_AWARD
+                                    WHERE MYMOVIES.CELEB_AWARD.CELEBID = ${celebData.celebID}`
+        let deletedCelebAward = await SQLexecuter(deleteCelebAward_sql)
+
+        for (let index = 0; index < celebAward.length; index++) {
+            let celebAward_sql = `INSERT INTO MYMOVIES.CELEB_AWARD VALUES (${celebAward[index].movieID},${celebData.celebID},${celebAward[index].awardID},${celebAward[index].recieveDate})`
+            const added_celeb_award = SQLexecuter(celebAward_sql)
+        }
+    }
+
+
+    return res.json({ redirectURL: `/admin/updateCelebsPage?ID=${celebData.celebID.trim()}` })
+})
+
+
+
+
+const deleteCeleb = (async (req,res) => {
+    let {celebID} = req.body
+    
+    // Deleting celeb from Movie_Celeb.
+    let delete_movieCeleb_sql = `DELETE FROM MYMOVIES.MOVIE_CELEB
+                                WHERE MYMOVIES.MOVIE_CELEB.CELEBID = ${celebID}`
+    let deletedMovieCeleb = await SQLexecuter(delete_movieCeleb_sql)
+
+    // Deleting celeb from Celeb_Award.
+    let delete_celebAward_sql = `DELETE FROM MYMOVIES.CELEB_AWARD
+                                WHERE MYMOVIES.CELEB_AWARD.CELEBID = ${celebID}`
+    let deleted_celebAward = await SQLexecuter(delete_celebAward_sql)
+
+
+
+    // deleting from CELEB.
+    let deleteCeleb_sql = `DELETE FROM MYMOVIES.CELEB
+                            WHERE MYMOVIES.CELEB.ID = ${celebID}`
+    let deletedMovie = await SQLexecuter(deleteCeleb_sql)
+
+    return res.json({ redirectURL: `/admin/updateCelebsHomePage` })
+})
 
 
 
@@ -460,4 +575,7 @@ const deleteMovie = (async (req,res) =>{
 
 
 
-export { getAllGenres, getAllMoviesAwards, getAllDirectorAwards, getAllCastAwards, getAllMovies, getAllCastInfo, getALLCastInfo, getMovieCastInfo, getMovieDirectorInfo, getMovieInfo, getMovieGenreInfo, getMovieAwardInfo, addCelebs, addMovies, updateMovie,deleteMovie }
+
+
+
+export { getAllGenres, getAllMoviesAwards, getAllDirectorAwards, getAllCastAwards,getAllCelebsAwards,getCelebAwardInfo, getAllMovies, getAllCastInfo, getALLCastInfo,getCelebInfo, getMovieCastInfo, getMovieDirectorInfo, getMovieInfo, getMovieGenreInfo, getMovieAwardInfo, addCelebs, addMovies, updateMovie,deleteMovie,updateCeleb,deleteCeleb }

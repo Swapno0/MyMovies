@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { getAllGenres,addCelebs,getAllCastInfo, addMovies, getAllCastAwards, getAllMovies, getMovieCastInfo, getMovieInfo, getMovieDirectorInfo, getALLCastInfo, getAllMoviesAwards, getAllDirectorAwards, updateMovie, getMovieGenreInfo, getMovieAwardInfo, deleteMovie } from "../controller/admin.controller.js";
+import { getAllGenres,addCelebs,getAllCastInfo, addMovies, getAllCastAwards, getAllMovies, getMovieCastInfo, getMovieInfo, getMovieDirectorInfo, getALLCastInfo, getAllMoviesAwards, getAllDirectorAwards, updateMovie, getMovieGenreInfo, getMovieAwardInfo, deleteMovie, getCelebInfo, getAllCelebsAwards, getCelebAwardInfo,updateCeleb, deleteCeleb } from "../controller/admin.controller.js";
 
 const router = Router()
 
@@ -87,6 +87,32 @@ router.get('/updateMoviesPage', async(req,res) =>{
 })
 
 
+router.get('/updateCelebsHomePage', async (req,res) => {
+  if (req.session.isAdminAuth) {
+    const allCasts = await getALLCastInfo()
+    res.render('updateCelebsHomePage',{allCasts})
+  }
+  else{
+    res.redirect("/login_page")
+  }
+})
+
+
+router.get('/updateCelebsPage', async(req,res) =>{
+  if (req.session.isAdminAuth) {
+    let celebInfo = await getCelebInfo(req,res)
+    let celebAwards = await getAllCelebsAwards(req,res)
+    let celebAwardInfo = await getCelebAwardInfo(req,res)
+    let allMovies = await getAllMovies(req,res)
+    
+    res.render('updateCelebsPage',{celebInfo,celebAwards,celebAwardInfo,allMovies})
+  }
+  else{
+    res.redirect("/login_page")
+  }
+})
+
+
 
 router.post('/addCelebs',
   upload.fields([
@@ -134,7 +160,21 @@ router.post('/updateMovie',
 
 
 
+
+router.post('/updateCeleb',
+  upload.fields([
+        {
+            name: "avatar",
+            maxCount: 1
+        }
+    ]), 
+  updateCeleb)
+
+
+
 router.post('/deleteMovie',deleteMovie)
+
+router.post('/deleteCeleb',deleteCeleb)
 
 
 
