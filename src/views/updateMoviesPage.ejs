@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/util.css">
+    <link rel="stylesheet" href="/css/updateMoviesPage.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container0 flex align">
+        <a class="anchor" href="/admin/updateMoviesHomePage"><div class="backButton flex align justify cursor">Back</div></a>
+        <div class="deleteMovieButton flex align justify cursor">Delete Movie</div>
+    </div>
+    <div class="container1 flex align">
+        <div class="basicInfo">
+            <div class="movieID" hidden>
+                <%= movieInfo.rows[0].ID %>
+            </div>
+            <div class="movieTitle">
+                <%= movieInfo.rows[0].TITLE %>
+            </div>
+            <div class="num flex">
+                <div class="movieReleaseDate">Release : <%= (movieInfo.rows[0].RELEASEDATE).toISOString().split("T")[0]
+                        %>
+                </div>
+                <div class="movieDuration">Duration : <%= movieInfo.rows[0].DURATION %> mins</div>
+            </div>
+            <div class="movieImages">
+                <img src="<%= movieInfo.rows[0].POSTER %>" alt="" height="250px">
+                <img src="<%= movieInfo.rows[0].COVERPHOTO %>" alt="" height="250px">
+            </div>
+            <div class="movieDescription">
+                <%= movieInfo.rows[0].DESCRIPTION %>
+            </div>
+
+            <div class="movieCountry">Country : <%= movieInfo.rows[0].COUNTRY %>
+            </div>
+            <div class="movieLanguage">Language : <%= movieInfo.rows[0].LANGUAGE %>
+            </div>
+        </div>
+
+        <div class="basicInfoUpdateBox">
+            <div class="moviesName field">
+                <input type="text" id="moviesname" name="moviesName" placeholder="Movie Name" autocomplete="off">
+            </div>
+
+            <div class="releaseDate field">
+                <input type="text" id="releasedate" name="releaseDate" placeholder="Release Date: MM/DD/YYYY"
+                    autocomplete="off">
+            </div>
+
+            <div class="duration field">
+                <input type="text" id="duration" name="duration" placeholder="Duration in mins" autocomplete="off">
+            </div>
+
+            <div class="poster flex">
+                <label for="poster">Poster: </label>
+                <input type="file" id="poster" name="poster" placeholder="Poster" autocomplete="off">
+            </div>
+
+            <div class="coverPhoto ">
+                <label for="coverphoto">Cover Picture</label>
+                <input type="file" id="coverphoto" name="coverPhoto" placeholder="Cover Photo" autocomplete="off">
+            </div>
+
+            <div class="language field">
+                <input type="text" id="language" name="language" placeholder="Language" autocomplete="off">
+            </div>
+
+            <div class="country field">
+                <input type="text" id="country" name="country" placeholder="Country" autocomplete="off">
+            </div>
+
+            <div class="description field">
+                <textarea name="description" id="description" rows="6" cols="35" placeholder="Movie Description" autocomplete="off"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="heading">GENRE</div>
+    <div class="container5">
+        <div class="genreContainer flex wrap align">
+            <% for( let index = 0; index < movieGenreInfo.rows.length; index++ ) { %>
+                <div class="genreBox flex align">
+                    <div class="genreInfo flex align">
+                        <div class="genreID" hidden><%= movieGenreInfo.rows[index].ID %></div>
+                        <div class="genreName"><%= movieGenreInfo.rows[index].TITLE %></div>
+                    </div>
+
+                    <div class="cross_btn cursor"><img src="/images/icons/cross_icon.svg" alt=""></div>
+                </div>
+            <% } %>
+        </div>
+
+
+        <div class="genreUpdateContainer flex wrap align">
+            <% for( let index = 0; index < allGenreInfo.rows.length; index++ ) { %>
+                <div class="genreBox flex align justify cursor">
+                    <div class="genreInfo flex align justify">
+                        <div class="genreID" hidden><%= allGenreInfo.rows[index].ID %></div>
+                        <div class="genreName"><%= allGenreInfo.rows[index].TITLE %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="heading">CAST</div>
+    <div class="container2">
+        <div class="castInfo flex wrap align">
+            <% for( let index=0; index < movieCastInfo.rows.length; index++ ) { %>
+                <div class="castBox flex align">
+                    <div class="info flex align">
+                        <div class="celebID" hidden><%= movieCastInfo.rows[index].ID %></div>
+                        <img src="<%= movieCastInfo.rows[index].AVATAR %>" alt="" width="65px" height="83px">
+                        <div class="name_role">
+                            <div class="name">
+                                <%= movieCastInfo.rows[index].NAME %>
+                            </div>
+                            <div class="role">
+                                <%= movieCastInfo.rows[index].ROLE %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cross_btn cursor"><img src="/images/icons/cross_icon.svg" alt=""></div>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="updateCastInfo flex justify">
+            <div class="searchPortion">
+                <div class="searchBox flex flex_col">
+                    <input type="text" class="searchBox">
+                </div>
+
+                <div class="celebShowBox">
+                    <% for( let index=0; index < allCastInfo.rows.length; index++ ) { %>
+                        <div class="castBox flex align cursor">
+                            <div class="celebID" hidden><%= allCastInfo.rows[index].ID %></div>
+                            <img src="<%= allCastInfo.rows[index].AVATAR %>" alt="" width="60px" height="80px">
+                            <div class="name"><%= allCastInfo.rows[index].NAME %></div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="selectPortion">
+                <div class="roleBox">
+                    <input type="text" class="roleBox">
+                </div>
+                <div class="celebSelected">
+
+                </div>
+            </div>
+
+
+            <div class="addBtn flex align justify cursor">ADD</div>
+            
+        </div>
+    </div>
+
+
+
+    <div class="heading">DIRECTOR</div>
+    <div class="container3">
+        <div class="directorInfo flex wrap align">
+            <% for( let index=0; index < movieDirectorInfo.rows.length; index++ ) { %>
+                <div class="directorBox flex align">
+                    <div class="info flex align">
+                        <div class="celebID" hidden><%= movieDirectorInfo.rows[index].ID %></div>
+                        <img src="<%= movieDirectorInfo.rows[index].AVATAR %>" alt="" width="65px" height="83px">
+                        <div class="name_role">
+                            <div class="name">
+                                <%= movieDirectorInfo.rows[index].NAME %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cross_btn cursor"><img src="/images/icons/cross_icon.svg" alt=""></div>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="updateDirectorInfo flex justify">
+            <div class="searchPortion">
+                <div class="searchBox flex flex_col">
+                    <input type="text" class="searchBox">
+                </div>
+
+                <div class="celebShowBox">
+                    <% for( let index=0; index < allCastInfo.rows.length; index++ ) { %>
+                        <div class="directorBox flex align cursor">
+                            <div class="celebID" hidden><%= allCastInfo.rows[index].ID %></div>
+                            <img src="<%= allCastInfo.rows[index].AVATAR %>" alt="" width="60px" height="80px">
+                            <div class="name"><%= allCastInfo.rows[index].NAME %></div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="selectPortion">
+                <div class="celebSelected">
+
+                </div>
+            </div>
+
+
+            <div class="addBtn flex align justify cursor">ADD</div>
+            
+        </div>
+    </div>
+
+    <div class="heading">MOVIE AWARD</div>
+    <div class="container6">
+        <div class="awardInfoContainer flex align wrap">
+            <% for( let index = 0; index < movieAwardInfo.rows.length; index++ ) { %>
+                <div class="awardContainer flex align">
+                    <div class="awardInfo flex align">
+                        <div class="id_name_date">
+                            <div class="awardID" hidden><%= movieAwardInfo.rows[index].ID %></div>
+                            <div class="awardName"><%= movieAwardInfo.rows[index].AWARD_NAME %></div>
+                            <div class="awardRecieveDate"><%= movieAwardInfo.rows[index].RECIEVEDATE %></div>
+                        </div>
+                        <div class="cross_btn cursor"><img src="/images/icons/cross_icon.svg" alt=""></div>
+                    </div>
+                </div>
+            <% } %>
+
+            
+        </div>
+
+        <div class="awardInfoUpdateContainer flex align wrap justify">
+            <% for( let index = 0; index < movieAwards.rows.length; index++ ) { %>
+                <div class="awardUpdateContainer flex align justify cursor">
+                    <div class="awardUpdateInfo flex align justify">
+                        <div class="awardID" hidden><%= movieAwards.rows[index].ID %></div>
+                        <div class="awardName"><%= movieAwards.rows[index].AWARD_NAME %></div>
+                    </div>
+                </div>
+            <% } %>
+            <div class="options flex align justify">
+                <div class="awardSelectedBox">
+
+                </div>
+                <div class="recieveDateBox">
+                    <input type="text" class="recieveDateBox">
+                </div>
+                <div class="addAwardBtn flex align justify cursor">Add</div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <div class="updateDiv flex align justify">
+        <div class="updateBtn flex align justify cursor">Update Movie</div>
+    </div>
+    
+
+
+
+    <script src="/script/updateMoviespage.js"></script>
+</body>
+
+</html>

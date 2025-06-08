@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { getAllGenres,addCelebs,getCastInfo, addMovies, getAllCastAwards } from "../controller/admin.controller.js";
+import { getAllGenres,addCelebs,getAllCastInfo, addMovies, getAllCastAwards, getAllMovies, getMovieCastInfo, getMovieInfo, getMovieDirectorInfo, getALLCastInfo, getAllMoviesAwards, getAllDirectorAwards, updateMovie, getMovieGenreInfo, getMovieAwardInfo, deleteMovie } from "../controller/admin.controller.js";
 
 const router = Router()
 
@@ -16,11 +16,9 @@ router.get("/",(req,res) => {
 router.get('/addMoviesPage', async(req,res) =>{
   if (req.session.isAdminAuth) {
     const allGenre = await getAllGenres();
-    const castAwards = await getAllCastAwards()
     const error = req.session.error
     delete req.session.error
-    console.log(castAwards)
-    res.render('addMoviesPage',{allGenre:allGenre,error,castAwards})
+    res.render('addMoviesPage',{allGenre:allGenre,error})
   }
   else{
     res.redirect("/login_page")
@@ -45,13 +43,43 @@ router.get('/addCelebsPage', async(req,res) =>{
 
 
 
-router.get('/updateMoviesPage', async(req,res) =>{
+router.get('/updateMoviesHomePage', async(req,res) =>{
   if (req.session.isAdminAuth) {
+    const allMovies = await getAllMovies()
     const error = req.session.error
     const msg = req.session.success_msg
     delete req.session.error
     delete req.session.success_msg
-    res.render('updateMoviesPage',{error,msg})
+    res.render('updateMoviesHomePage',{error,msg,allMovies})
+  }
+  else{
+    res.redirect("/login_page")
+  }
+})
+
+
+
+router.get('/updateMoviesPage', async(req,res) =>{
+  if (req.session.isAdminAuth) {
+    const movieInfo = await getMovieInfo(req,res)
+    const movieCastInfo = await getMovieCastInfo(req,res)
+    const movieDirectorInfo = await getMovieDirectorInfo(req,res)
+    const allCastInfo = await getALLCastInfo(req,res)
+    const movieAwards = await getAllMoviesAwards()
+    const castAwards = await getAllCastAwards(req,res)
+    const directorAwards = await getAllDirectorAwards(req,res)
+    const allGenreInfo = await getAllGenres(req,res)
+    const movieGenreInfo = await getMovieGenreInfo(req,res)
+    const movieAwardInfo = await getMovieAwardInfo(req,res)
+    // console.log(movieAwardInfo)
+    // console.log(allGenreInfo)
+    // console.log(movieGenreInfo)
+    // console.log(movieAwards.rows)
+    // console.log(castAwards.rows)
+    // console.log(directorAwards.rows)
+    // console.log(movieInfo)
+    // console.log(movieCastInfo)
+    res.render('updateMoviesPage',{movieInfo,movieCastInfo,movieDirectorInfo,movieGenreInfo,allGenreInfo,allCastInfo,movieAwards,castAwards,directorAwards,movieAwardInfo})
   }
   else{
     res.redirect("/login_page")
@@ -71,7 +99,7 @@ router.post('/addCelebs',
 
 
 
-router.post('/getCastInfo',getCastInfo)
+router.post('/getCastInfo',getAllCastInfo)
 
 
 
@@ -88,6 +116,27 @@ router.post('/addMovies',
         }
     ]), 
   addMovies)
+
+
+
+router.post('/updateMovie',
+  upload.fields([
+        {
+            name: "poster",
+            maxCount: 1
+        },
+        {
+            name: "coverPhoto",
+            maxCount: 1
+        }
+    ]), 
+  updateMovie)
+
+
+
+router.post('/deleteMovie',deleteMovie)
+
+
 
 
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/updateMoviesHomePage.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/admin" class="anchor"><div class="backButton flex align justify cursor">Back</div></a>
+
+    <div class="searchBox flex justify align">
+        <input type="text" name="searchBox" class="searchBox">
+    </div>
+
+    <div class="container flex wrap justify">
+        <% for( let index = 0; index < allMovies.rows.length; index++ ) { %>
+            <a class="anchor" href="/admin/updateMoviesPage/?ID=<%= allMovies.rows[index].ID %>">
+            <div class="movieBox flex align flex_col justify cursor">
+                <div class="MovieID" hidden><%= allMovies.rows[index].ID %></div>
+                <img class="MoviePoster" src="<%= allMovies.rows[index].POSTER %>" alt="" width="150px" >
+                <div class="MovieTitle flex wrap"><%= allMovies.rows[index].TITLE %></div>
+            </div>
+            </a>
+        <% } %>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+
+body{
+    background-color: black;
+    color: white;
+    
+}
+.heading{
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.container0{
+    justify-content: space-between;
+}
+.container0 .deleteMovieButton{
+    height: 40px;
+    width: 150px;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    margin-right: 40px;
+    margin-top: 40px;
+    position: relative;
+    border-radius: 5px;
+}
+.container0 .deleteMovieButton:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+    background-color: rgb(145, 19, 19);
+}
+
+.container1{
+    /* width: 100%; */
+    border: 1px solid white;
+    margin: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.basicInfo{
+    width: 655px;
+    padding: 20px;
+    /* background-color: blue; */
+}
+
+.basicInfo .movieTitle{
+    font-size: larger;
+    font-family: 'Poppins';
+    font-weight: 500;
+    padding: 20px 0;
+    
+}
+
+.basicInfo .num{
+    padding-bottom: 20px;
+}
+
+.basicInfo .movieDescription{
+    padding: 20px 0;
+    max-height: 130px;
+}
+
+
+.basicInfoUpdateBox{
+    position: relative;
+    right: 50px;
+}
+
+.basicInfoUpdateBox .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    margin: 8px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+.basicInfoUpdateBox .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+.basicInfoUpdateBox .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: azure;
+}
+
+.basicInfoUpdateBox .description{
+    border-radius: 8px;
+    justify-content: flex-start;
+    margin: 8px;
+    height: 90px;
+}
+.basicInfoUpdateBox .description textarea{
+    resize: none;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    outline: none;
+    padding-left: 10px;
+    color: azure;
+}
+
+.basicInfoUpdateBox .poster{
+    background-color: black;
+    border: none;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    position: relative;
+    left: 7px;
+}
+.basicInfoUpdateBox .poster input{
+    margin-left: 7px;
+}
+.basicInfoUpdateBox .coverPhoto{
+    background-color: black;
+    border: none;
+    margin: 8px 0px;
+    position: relative;
+    left: 7px;
+}
+.basicInfoUpdateBox .coverPhoto input{
+    margin-left: 5px;
+}
+
+
+
+.container5{
+    border: 1px solid white;
+    margin: 15px 30px;
+    padding: 20px;
+}
+
+.container5 .genreContainer .genreBox{
+    gap: 15px;
+    margin: 15px 0;
+    margin-right: 20px;
+    background-color: rgb(38, 38, 38);
+    padding-right: 10px;
+    width: 200px;
+    height: 45px;
+    justify-content: space-between;
+    border-radius: 40px;
+}
+
+.container5 .genreContainer .genreBox .genreName{
+    padding: 10px;
+}
+
+.container5 .genreUpdateContainer{
+    margin-top: 80px;
+}
+.container5 .genreUpdateContainer .genreBox{
+    gap: 15px;
+    margin: 15px 0;
+    margin-right: 20px;
+    /* padding-right: 10px; */
+    width: 150px;
+    height: 45px;
+    border-radius: 60px;
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+
+.container5 .genreUpdateContainer .genreBox:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+
+
+.container2{
+    border: 1px solid white;
+    margin: 15px 30px;
+    padding: 20px;
+    /* justify-content: space-between; */
+}
+
+
+
+.castInfo{
+    height: 250px;
+    overflow-y: scroll;
+}
+.castInfo .castBox{
+    gap: 15px;
+    margin: 15px 0;
+    margin-right: 20px;
+    background-color: rgb(38, 38, 38);
+    padding-right: 10px;
+    width: 350px;
+    height: 83px;
+    justify-content: space-between;
+}
+
+.castInfo .castBox .name_role{
+    padding: 10px;
+
+}
+.castInfo .castBox .name_role .name{
+    font-size: larger;
+    font-family: 'Roboto';
+}
+.castInfo .castBox .name_role .role{
+    color: rgb(165, 165, 165);
+}
+
+
+.updateCastInfo{
+    margin-top: 100px;
+    height: 390px;
+    gap: 30px;
+}
+.updateCastInfo input{
+    background-color: rgb(18, 18, 18);
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 230px;
+    margin-bottom: 5px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+}
+.updateCastInfo input:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+.updateCastInfo .celebShowBox{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.updateCastInfo .castBox{
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    background-color: rgb(24, 24, 24);
+    padding-right: 10px;
+    width: 350px;
+    justify-content: space-between;
+    border-radius: 6px;
+}
+.updateCastInfo .castBox:hover{
+    background-color: rgb(42, 42, 42);
+}
+.updateCastInfo .castBox .name{
+    font-size: larger;
+    font-family: 'Roboto';
+    padding: 10px;
+}
+
+.updateCastInfo .selectPortion{
+    width: 350px;
+}
+
+.updateCastInfo .selectPortion .celebSelected{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    background-color: rgb(24, 24, 24);
+    padding-right: 10px;
+    width: 350px;
+    justify-content: space-between;
+    border-radius: 6px;
+}
+
+
+
+
+
+.addBtn{
+    height: 40px;
+    width: 100px;
+    background-color: rgb(18, 18, 18);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+.addBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+
+
+
+
+
+.container3{
+    border: 1px solid white;
+    margin: 15px 30px;
+    padding: 20px;
+    /* justify-content: space-between; */
+}
+
+
+
+.directorInfo{
+    height: 250px;
+    overflow-y: scroll;
+}
+.directorInfo .directorBox{
+    gap: 15px;
+    margin: 15px 0;
+    margin-right: 20px;
+    background-color: rgb(38, 38, 38);
+    padding-right: 10px;
+    width: 350px;
+    height: 83px;
+    justify-content: space-between;
+}
+
+.directorInfo .directorBox .name_role{
+    padding: 10px;
+
+}
+.directorInfo .directorBox .name_role .name{
+    font-size: larger;
+    font-family: 'Roboto';
+}
+.directorInfo .directorBox .name_role .role{
+    color: rgb(165, 165, 165);
+}
+
+
+.updateDirectorInfo{
+    margin-top: 100px;
+    height: 390px;
+    gap: 30px;
+}
+.updateDirectorInfo input{
+    background-color: rgb(18, 18, 18);
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 230px;
+    margin-bottom: 5px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+}
+.updateDirectorInfo input:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+.updateDirectorInfo .celebShowBox{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.updateDirectorInfo .directorBox{
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    background-color: rgb(24, 24, 24);
+    padding-right: 10px;
+    width: 350px;
+    justify-content: space-between;
+    border-radius: 6px;
+}
+.updateDirectorInfo .directorBox:hover{
+    background-color: rgb(42, 42, 42);
+}
+.updateDirectorInfo .directorBox .name{
+    font-size: larger;
+    font-family: 'Roboto';
+    padding: 10px;
+}
+
+.updateDirectorInfo .selectPortion{
+    width: 350px;
+}
+
+.updateDirectorInfo .selectPortion .celebSelected{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    background-color: rgb(24, 24, 24);
+    padding-right: 10px;
+    width: 350px;
+    justify-content: space-between;
+    border-radius: 6px;
+}
+
+
+
+
+.container6{
+    border: 1px solid white;
+    margin: 15px 30px;
+    padding: 20px;
+}
+.container6 .awardContainer{
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.container6 .awardContainer .awardInfo{
+    gap: 15px;
+    margin: 15px 0;
+    margin-right: 20px;
+    background-color: rgb(38, 38, 38);
+    padding-right: 10px;
+    width: 350px;
+    height: 60px;
+    justify-content: space-between;
+    padding-left: 25px;
+}
+
+.container6 .awardInfoUpdateContainer .awardUpdateContainer {
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    padding-right: 10px;
+    width: 350px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+
+.container6 .awardInfoUpdateContainer .awardUpdateContainer:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.container6 .options .awardSelectedBox .awardSelectedInfo{
+    gap: 15px;
+    margin: 5px 0;
+    margin-right: 20px;
+    padding-right: 10px;
+    width: 350px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: rgb(17, 17, 17);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+
+.container6 .options .recieveDateBox input{
+    background-color: rgb(18, 18, 18);
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 230px;
+    margin-bottom: 5px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+    margin: 30px 10px;
+}
+.container6 .options .recieveDateBox input:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.container6 .options .addAwardBtn{
+    height: 40px;
+    width: 80px;
+    background-color: rgb(18, 18, 18);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+}
+.container6 .options .addAwardBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+
+
+.updateBtn{
+    height: 45px;
+    width: 150px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    color: white;
+    padding: 5px;
+    margin: 20px;
+    background-color: rgb(18, 18, 18);
+}
+.updateBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
