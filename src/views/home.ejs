@@ -5,12 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/home_page.css">
+    <link rel="stylesheet" href="/css/util.css">
 </head>
 <body>
     <%- include('./components/header.ejs') %>
-    <div class=".body">
-        This is homepage for 
-        <%= loggedInUser.rows[0].USERNAME %>
+
+    <!-- A wallpaper carousel that also welcomes the user -->
+    <div class="wallpaperCarousel">
+
     </div>
+
+
+    <!-- Newly Added Section -->
+     <div class="heading">Newly Added</div>
+    <div class="newlyAdded flex justify">
+        <div class="moviesContainer flex">
+            <% for( let index = 0; index < newlyAddedMovies.rows.length; index++ ) { %>
+                <div class="moviesInnerContainer">
+                    <div class="movieID" hidden><%= newlyAddedMovies.rows[index].ID %></div>
+                    <svg class="bookmark" height="50" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" fill="#e74c3c">
+                        <path d="M0 0 H100 V130 L50 110 L0 130 Z" />
+                    </svg>
+                    <div class="movies flex flex_col align justify cursor">
+                        <div class="movieID" hidden><%= newlyAddedMovies.rows[index].ID %></div>
+                        <img class="poster" src="<%= newlyAddedMovies.rows[index].POSTER %>" alt="" height="225px" width="150px">
+    
+                        <div class="rating flex align">
+                            <img src="/images/icons/star.png" alt="" height="15px">
+                            <div class="rateNum"><%= newlyAddedMovies.rows[index].AVGRATING %></div>
+                        </div>
+                        <div class="movieTitle"><%= newlyAddedMovies.rows[index].TITLE %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Top Rated  -->
+    <div class="heading">Top Rated</div>
+    <div class="topRated flex justify">
+        <div class="moviesContainer flex">
+            <% for( let index = 0; index < topRatedMovies.rows.length; index++ ) { %>
+                <div class="moviesInnerContainer">
+                    <div class="movieID" hidden><%= topRatedMovies.rows[index].ID %></div>
+                    <svg class="bookmark" height="50" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" fill="#e74c3c">
+                        <path d="M0 0 H100 V130 L50 110 L0 130 Z" />
+                    </svg>
+                    <div class="movies flex flex_col align justify cursor">
+                        <div class="movieID" hidden><%= topRatedMovies.rows[index].ID %></div>
+                        <img class="poster" src="<%= topRatedMovies.rows[index].POSTER %>" alt="" height="225px" width="150px">
+    
+                        <div class="rating flex align">
+                            <img src="/images/icons/star.png" alt="" height="15px">
+                            <div class="rateNum"><%= topRatedMovies.rows[index].AVGRATING %></div>
+                        </div>
+                        <div class="movieTitle"><%= topRatedMovies.rows[index].TITLE %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <!-- Most Popular Celebrities  -->
+    <div class="heading">Most Popular Celebrities</div>
+    <div class="mostPopularCelebrities flex justify">
+        <div class="celebsContainer flex">
+            <% for( let index = 0; index < mostPopularCelebrities.rows.length; index++ ) { %>
+                <div class="celebs flex flex_col align cursor">
+                    <dic class="celebID" hidden><%= mostPopularCelebrities.rows[index].ID %></dic>
+                    <img src="<%= mostPopularCelebrities.rows[index].AVATAR %>" alt="" height="200px" width="160px">
+                    <div class="celebName"><%= mostPopularCelebrities.rows[index].NAME %></div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <!-- Top Picks  -->
+     <div class="heading">Top Picks</div>
+    <div class="topPicks flex justify">
+        <div class="moviesContainer flex">
+            <% for( let index = 0; index < topPicksMovies.rows.length; index++ ) { %>
+                <div class="moviesInnerContainer">
+                    <div class="movieID" hidden><%= topPicksMovies.rows[index].ID %></div>
+                    <svg class="bookmark" height="50" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" fill="#e74c3c">
+                        <path d="M0 0 H100 V130 L50 110 L0 130 Z" />
+                    </svg>
+                    <div class="movies flex flex_col align justify cursor">
+                        <div class="movieID" hidden><%= topPicksMovies.rows[index].ID %></div>
+                        <img class="poster" src="<%= topPicksMovies.rows[index].POSTER %>" alt="" height="225px" width="150px">
+    
+                        <div class="rating flex align">
+                            <img src="/images/icons/star.png" alt="" height="15px">
+                            <div class="rateNum"><%= topPicksMovies.rows[index].AVGRATING %></div>
+                        </div>
+                        <div class="movieTitle"><%= topPicksMovies.rows[index].TITLE %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <!-- Trending  -->
+    <div class="trending">
+
+    </div>
+
+    <!-- For You  -->
+    <div class="forYou">
+
+    </div>
+
+    <!-- More to Explore  -->
+    <div class="moreToExplore">
+
+    </div>
+
+    <!-- Recently Viewed  -->
+    <div class="heading">Recently Viewed</div>
+    <div class="recentlyViewed flex justify">
+        <div class="moviesContainer flex">
+            <% for( let index = 0; index < watchHistory.rows.length; index++ ) { %>
+                <div class="moviesInnerContainer">
+                    <div class="movieID" hidden><%= watchHistory.rows[index].ID %></div>
+                    <svg class="bookmark" height="50" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" fill="#e74c3c">
+                        <path d="M0 0 H100 V130 L50 110 L0 130 Z" />
+                    </svg>
+                    <div class="movies flex flex_col align justify cursor">
+                        <div class="movieID" hidden><%= watchHistory.rows[index].ID %></div>
+                        <img class="poster" src="<%= watchHistory.rows[index].POSTER %>" alt="" height="225px" width="150px">
+    
+                        <div class="rating flex align">
+                            <img src="/images/icons/star.png" alt="" height="15px">
+                            <div class="rateNum"><%= watchHistory.rows[index].AVGRATING %></div>
+                        </div>
+                        <div class="movieTitle"><%= watchHistory.rows[index].TITLE %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="/script/home.js"></script>
 </body>
 </html>

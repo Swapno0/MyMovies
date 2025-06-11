@@ -1,0 +1,44 @@
+import { Router } from "express";
+import { upload } from "../middleware/multer.middleware.js";
+import { addReview, getCastInfo, getDirectorInfo, getMovieAwardInfo, getMovieGenreInfo, getMovieInfo } from "../controller/movie.controller.js";
+
+const router = Router()
+
+
+router.get("/", async(req,res) => {
+  if (req.session.isAuth) {
+    let movieInfo = await getMovieInfo(req,res)
+    let movieGenreInfo = await getMovieGenreInfo(req,res)
+    let movieAwardInfo = await getMovieAwardInfo(req,res)
+    let castInfo = await getCastInfo(req,res)
+    let directorInfo = await getDirectorInfo(req,res)
+    
+
+    res.render('movie',{movieInfo,movieGenreInfo,movieAwardInfo,castInfo,directorInfo})
+  }
+  else{
+    res.redirect("/")
+  }
+
+})
+
+
+
+router.get("/addReviewPage", async(req,res) => {
+  if (req.session.isAuth) {
+    let movieID = req.query.ID
+    let userName = req.session.userid
+    res.render('addReviewPage',{movieID,userName})
+  }
+  else{
+    res.redirect("/")
+  }
+})
+
+
+router.post("/addReview",addReview)
+
+
+
+
+export default router

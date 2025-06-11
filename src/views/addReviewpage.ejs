@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addReviewPage.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/home" class="anchor"><div class="backButton flex align justify cursor">Back</div></a>
+    <div class="movieID" hidden><%= movieID %></div>
+    <div class="userName" hidden><%= userName %></div>
+    <div class="container flex flex_col align">
+        <div class="ratingContainer flex align">
+            <div class="heading">YOUR RATING : </div>
+            <% for( let index = 1; index <= 10; index++ ) { %>
+                <div class="starRating">
+                    <div class="number" hidden><%= index %></div>
+                    <img src="/images/icons/rating_star.svg" alt="" height="40px">
+                </div>
+            <% } %>
+            <div class="givenRating flex align justify"></div>
+        </div>
+    
+        <div class="reviewContainer flex flex_col align">
+            <textarea class="heading" id="" rows="" cols="123" placeholder="Add your heading"></textarea>
+            <textarea class="content" id="" rows="20" cols="123" placeholder="Add your review"></textarea>
+        </div>
+    </div>
+
+    <div class="addBtn flex justify align cursor">Add Review</div>
+
+
+    <script src="/script/addReviewPage.js"></script>
+</body>
+</html>

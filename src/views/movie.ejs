@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/movie.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="movieInfoContainer">
+        <div class="imageContainer flex align">
+            <a href="/home" class="anchor"><div class="backBtn flex align justify cursor"><<<</div></a>
+            <img class="poster" src="<%= movieInfo.rows[0].POSTER %>" alt="" crossorigin="anonymous" height="500px">
+            <img class="coverPhoto" src="<%= movieInfo.rows[0].COVERPHOTO %>" alt="" crossorigin="anonymous" >
+        </div>
+        <div class="imageCoverer"></div>
+        <div class="basicInfoContainer flex align">
+            <div class="basicInfoBox">
+                <div class="movieID"><%= movieInfo.rows[0].ID %></div>
+                <div class="title"><%= movieInfo.rows[0].TITLE %></div>
+                <div class="nums flex">
+                    <div class="date_country"><%= movieInfo.rows[0].RELEASEDATE.toISOString().split("T")[0] %> (<%= movieInfo.rows[0].COUNTRY %>)</div>
+                    <div class="duration"><li><%= movieInfo.rows[0].DURATION %></li></div>
+                    <div class="language"><li><%= movieInfo.rows[0].LANGUAGE %></li></div>
+                </div>
+                <div class="genreContainer flex">
+                    <% for( let index = 0; index < movieGenreInfo.rows.length; index++ ) { %>
+                        <div class="box flex align justify"><div class="genreInfo"><%= movieGenreInfo.rows[index].TITLE %></div></div>
+                    <% } %>
+                </div>
+
+                <div class="rating_watchlist">
+                    <!-- adding functionality to rate and add to watchlist options in these here parts -->
+                </div>
+
+                <div class="description">
+                    <h2>OVERVIEW</h2>
+                    <%= movieInfo.rows[0].DESCRIPTION %>
+                </div>
+                <div class="directorContainer">
+                    <h2>DIRECTOR</h2>
+                    <div class="director flex"></div>
+                    <% for( let index = 0; index < directorInfo.rows.length; index++ ) { %>
+                        <div class="dirbox flex align justify cursor">
+                            <div class="directorID" hidden><%= directorInfo.rows[index].ID %></div>
+                            <div class="directorName"><%= directorInfo.rows[index].NAME %></div>
+                        </div>
+                    <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+
+
+    <div class="heading">Awards</div>
+    <div class="awardContainer">
+        <div class="awardBox flex align wrap">
+            <% for( let index = 0; index < movieAwardInfo.rows.length; index++ ) { %>
+                <div class="awardInfoBox">
+                    <div class="awardName"><%= movieAwardInfo.rows[index].TITLE %> for <%= movieAwardInfo.rows[index].AWARDDESCRIPTION %></div>
+                    <div class="awardDate"><%= movieAwardInfo.rows[index].RECIEVEDATE %></div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <div class="heading">Top Billed Casts</div>
+    <div class="castContainer">
+        <div class="castBox flex align">
+            <% for( let index = 0; index < castInfo.rows.length; index++ ) { %>
+                <div class="castInfoBox flex flex_col align cursor">
+                    <div class="castID" hidden><%= castInfo.rows[index].ID %></div>
+                    <img class="castAvatar" src="<%= castInfo.rows[index].AVATAR %>" height="210px" width="150px">
+                    <div class="castName"><%= castInfo.rows[index].NAME %></div>
+                    <!-- <img src="/images/icons/bookmark-unmarked.png" alt=""> -->
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <div class="heading">User Ratings</div>
+    <div class="userRatings">
+
+    </div>
+
+    <div class="heading">Featured Reviews</div>
+    <div class="reviewContainer">
+        <div class="addReviewBtn cursor">Add Review</div>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+    <script src="/script/movie.js"></script>
+</body>
+</html>

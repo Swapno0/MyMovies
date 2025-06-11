@@ -1,0 +1,233 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.backBtn{
+    height: 40px;
+    width: 80px;
+    background-color: rgba(255, 255, 255, 0.115);
+    backdrop-filter: blur(2px);
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    right: 250px;
+    bottom: 230px;
+    z-index: 800;
+}
+.backBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+.movieInfoContainer{
+    height: 560px;
+}
+
+.imageContainer{
+    justify-content: flex-end;
+    overflow-y: hidden;
+    height: 560px;
+}
+.imageContainer .poster{
+    position: absolute;
+    /* height: fit-content; */
+    z-index: 20;
+    padding: 20px;
+    left: 100px;
+    border-radius: 30px;
+}
+.imageContainer .coverPhoto{
+    /* width: 1500px; */
+    height: 700px;
+}
+.imageCoverer{
+    height: 560px;
+    width: 100%;
+    /* background-color: blue; */
+    position: relative;
+    bottom: 560px;
+}
+
+.basicInfoContainer{
+    height: 560px;
+    width: 100%;
+    /* background-color: rgba(0, 0, 255, 0.782); */
+    z-index: 100;
+    position: relative;
+    bottom:1120px ;
+    justify-content: center;
+}
+.basicInfoContainer .basicInfoBox{
+    height: 460px;
+    width: 1000px;
+    /* background-color: rgba(0, 0, 255, 0.389); */
+    z-index: 200;
+    position: relative;
+    left: 150px;
+    overflow-y: scroll;
+}
+
+li{
+    list-style-position: outside;
+}
+
+.basicInfoContainer .basicInfoBox .title{
+    font-size: xx-large;
+    padding: 20px 0;
+    font-weight: 900;
+    font-family: "Roboto", sans-serif;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.basicInfoContainer .basicInfoBox .nums{
+    gap: 25px; 
+    padding-bottom: 20px;
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.748);
+}
+
+.basicInfoContainer .basicInfoBox .genreContainer{
+    margin-bottom: 20px;
+    overflow-x: scroll;
+}
+
+.basicInfoContainer .basicInfoBox .box{
+    padding: 20px;
+    margin: 0 10px;
+    height: 30px;
+    /* width: 70px; */
+    backdrop-filter: blur(5px);
+    border: 1px solid white;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.115);
+}
+
+
+.basicInfoContainer .basicInfoBox .description{
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.basicInfoContainer .basicInfoBox h2{
+    font-family: "Poppins", sans-serif;
+}
+
+
+.basicInfoContainer .basicInfoBox .directorContainer{
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.basicInfoContainer .basicInfoBox .dirbox{
+    padding: 20px;
+    margin-top: 10px;
+    /* margin: 0 10px; */
+    height: 30px;
+    width: fit-content;
+    backdrop-filter: blur(2px);
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.115);
+}
+.basicInfoContainer .basicInfoBox .dirbox:hover{
+    background-color: rgba(255, 255, 255, 0.202);
+}
+
+
+
+
+.heading{
+    padding: 20px;
+    margin-left: 30px;
+    font-size: xx-large;
+    font-weight: 500;
+    font-family: "Roboto";
+}
+
+.awardContainer .awardBox {
+    margin:0 50px;
+}
+
+.awardContainer .awardBox .awardInfoBox{
+    /* height: 30px; */
+    padding: 20px;
+    margin-right: 20px;
+    /* background-color: rgb(12, 12, 12); */
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    border-radius: 6px;
+}
+.awardContainer .awardBox .awardInfoBox .awardName{
+    font-size:medium ;
+}
+.awardContainer .awardBox .awardInfoBox .awardDate{
+    color: rgba(255, 255, 255, 0.825);
+}
+
+.castContainer .castBox{
+    margin: 0 50px;
+    padding: 5px;
+}
+.castContainer .castBox .castInfoBox{
+    /* padding: 3px; */
+    margin-right: 20px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+.castContainer .castBox .castInfoBox:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+
+}
+.castContainer .castBox .castInfoBox .castAvatar{
+    border-radius: 6px;
+    padding-bottom: 20px;
+}
+.castContainer .castBox .castInfoBox .castName{
+    /* padding-top: 30px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    max-width: 142px;
+    padding-bottom: 10px;
+}
+
+
+.reviewContainer{
+    margin-bottom: 100px;
+}
+
+.reviewContainer .addReviewBtn{
+    width: fit-content;
+    padding: 15px;
+    font-size: medium;
+    font-family: sans-serif;
+    background-color: rgb(12, 12, 12);
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+    left: 1400px;
+}
+.reviewContainer .addReviewBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}

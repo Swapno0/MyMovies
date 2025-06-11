@@ -22,7 +22,7 @@
 }
 .box .profile_box:hover{
     background-color: #76747499;
-    border-color: aqua;
+    border-color: #e55252;
     transition: border-color 1.2s ease;
 }
 
@@ -108,13 +108,13 @@
 .header .search_bar button{
     height: 44px;
     width: 400px;
-    background-color:rgba(0, 255, 255, 0.915);
+    background-color:rgb(229, 82, 82);
     border: none;
     border-radius: 30px;
     padding: 10px;
 }
 .header .search_bar button:hover{
-    background-color:aqua;
+    background-color:rgb(255, 38, 38);
 }
 .header .search_bar button img{
     height: 24px;
@@ -142,5 +142,6 @@
 .header .search_bar button input::placeholder{
     font-size: medium;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(35, 35, 35);
 }
 
