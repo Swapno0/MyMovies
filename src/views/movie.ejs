@@ -17,7 +17,7 @@
         <div class="imageCoverer"></div>
         <div class="basicInfoContainer flex align">
             <div class="basicInfoBox">
-                <div class="movieID"><%= movieInfo.rows[0].ID %></div>
+                <div class="movieID" hidden><%= movieInfo.rows[0].ID %></div>
                 <div class="title"><%= movieInfo.rows[0].TITLE %></div>
                 <div class="nums flex">
                     <div class="date_country"><%= movieInfo.rows[0].RELEASEDATE.toISOString().split("T")[0] %> (<%= movieInfo.rows[0].COUNTRY %>)</div>
@@ -30,8 +30,10 @@
                     <% } %>
                 </div>
 
-                <div class="rating_watchlist">
+                <div class="rating_watchlist flex align">
                     <!-- adding functionality to rate and add to watchlist options in these here parts -->
+                    <img class="star" src="/images/icons/star.png" alt="" height="50px">
+                    <div class="rating_number"><%= movieInfo.rows[0].AVGRATING %> / 10</div>
                 </div>
 
                 <div class="description">
@@ -85,14 +87,31 @@
     </div>
 
 
-    <div class="heading">User Ratings</div>
+    <!-- <div class="heading">User Ratings</div>
     <div class="userRatings">
 
-    </div>
+    </div> -->
 
     <div class="heading">Featured Reviews</div>
     <div class="reviewContainer">
         <div class="addReviewBtn cursor">Add Review</div>
+        <div class="reviewStream flex align">
+            <% for( let index = 0; index < reviews.rows.length; index++ ) { %>
+                <div class="reviewBox">
+                    <div class="userID" hidden><%= reviews.rows[index].USERID %></div>
+                    <div class="movieID" hidden><%= reviews.rows[index].MOVIEID %></div>
+                    <div class="box flex">
+                        <div class="box2 flex align">
+                            <img src="/images/icons/small_star.png" alt="" height="15px">
+                            <div class="ratingNum"><%= reviews.rows[index].RATING %></div>
+                        </div>
+                        <div class="userName"><%= reviews.rows[index].USERNAME %></div>
+                    </div>
+                    <div class="head"><%= reviews.rows[index].HEADING %></div>
+                    <div class="content"><%= reviews.rows[index].CONTENT %></div>
+                </div>
+            <% } %>
+        </div>
     </div>
 
 

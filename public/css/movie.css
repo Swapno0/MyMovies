@@ -107,7 +107,7 @@ li{
 }
 
 .basicInfoContainer .basicInfoBox .genreContainer{
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     overflow-x: scroll;
 }
 
@@ -120,6 +120,16 @@ li{
     border: 1px solid white;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.115);
+}
+
+.basicInfoContainer .basicInfoBox .rating_watchlist .star{
+    margin: 20px 15px;
+    position: relative;
+    bottom: 4px;
+}
+.basicInfoContainer .basicInfoBox .rating_watchlist .rating_number{
+    font-size: xx-large;
+    font-weight: 400;
 }
 
 
@@ -162,6 +172,10 @@ li{
     font-family: "Roboto";
 }
 
+.awardContainer{
+    margin-bottom: 50px;
+}
+
 .awardContainer .awardBox {
     margin:0 50px;
 }
@@ -179,6 +193,12 @@ li{
 }
 .awardContainer .awardBox .awardInfoBox .awardDate{
     color: rgba(255, 255, 255, 0.825);
+}
+
+
+
+.castContainer{
+    margin-bottom: 50px;
 }
 
 .castContainer .castBox{
@@ -231,3 +251,57 @@ li{
     transform: translateY(-2px);
     box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
 }
+
+
+.reviewContainer .reviewStream{
+    margin-left: 50px;
+    overflow-x: scroll;
+}
+.reviewContainer .reviewStream .reviewBox{
+    margin: 20px 0;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: rgb(12, 12, 12);
+    width: 450px;
+    height: 240px;
+    border-radius: 6px;
+    /* justify-content: flex-start; */
+    /* margin: 8px; */
+    /* display: flex; */
+    /* justify-content: center; */
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    
+    overflow-y: hidden;
+    /* text-overflow: ellipsis; */
+}
+ .reviewContainer .reviewBox .box{
+    gap: 15px;
+    padding-bottom: 10px;
+    color: rgb(118, 118, 118);
+    font-weight: 100;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.reviewContainer .reviewBox .box2{
+    gap: 2px;
+}
+
+.reviewContainer .reviewBox .head{
+    overflow: hidden;
+    color: white;
+    font-size: xx-large;
+    font-weight: 500;
+    font-family: 'Roboto';
+    /* background-color: aqua; */
+    /* width: 410px; */
+    padding-bottom: 20px;
+ }
+
+ .reviewContainer .reviewBox .content{
+    color: rgb(216, 216, 216);
+    font-family: sans-serif;
+    /* height: 200px; */
+    /* background-color: aqua; */
+    /* height: 115px; */
+    
+ }

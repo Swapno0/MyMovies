@@ -14,7 +14,7 @@ const __dirname = dirname(__filename);
 
 
 
-const getMovieInfo = (async (req,res) => {
+const getMovieInfo = (async (req, res) => {
     let movieID = req.query.ID
     let sql = `SELECT * FROM MYMOVIES.MOVIE
                 WHERE MYMOVIES.MOVIE.ID = ${movieID}`
@@ -23,7 +23,7 @@ const getMovieInfo = (async (req,res) => {
 })
 
 
-const getMovieGenreInfo = (async (req,res) => {
+const getMovieGenreInfo = (async (req, res) => {
     let movieID = req.query.ID
     let sql = `SELECT *
                 FROM MYMOVIES.MOVIE_GENRE M JOIN MYMOVIES.GENRE G ON M.GENREID = G.ID
@@ -33,7 +33,7 @@ const getMovieGenreInfo = (async (req,res) => {
 })
 
 
-const getMovieAwardInfo = (async(req,res) => {
+const getMovieAwardInfo = (async (req, res) => {
     let movieID = req.query.ID
     let sql = `SELECT *
                 FROM MYMOVIES.MOVIE_AWARD M JOIN MYMOVIES.AWARD A ON M.AWARDID = A.ID
@@ -43,7 +43,7 @@ const getMovieAwardInfo = (async(req,res) => {
 })
 
 
-const getCastInfo = (async(req,res) => {
+const getCastInfo = (async (req, res) => {
     let movieID = req.query.ID
     let sql = `SELECT C.ID,C.AVATAR,C.NAME
                 FROM MYMOVIES.CELEB C JOIN MYMOVIES.MOVIE_CELEB M ON C.ID = M.CELEBID
@@ -51,12 +51,12 @@ const getCastInfo = (async(req,res) => {
                 M.CELEBTYPE = 'Actor'`
     let castInfo = await SQLexecuter(sql)
     return castInfo
-    
+
 })
 
 
 
-const getDirectorInfo = (async(req,res) => {
+const getDirectorInfo = (async (req, res) => {
     let movieID = req.query.ID
     let sql = `SELECT C.ID,C.AVATAR,C.NAME
                 FROM MYMOVIES.CELEB C JOIN MYMOVIES.MOVIE_CELEB M ON C.ID = M.CELEBID
@@ -69,8 +69,8 @@ const getDirectorInfo = (async(req,res) => {
 
 
 
-const addReview = (async(req,res) => {
-    let {userName,movieID,rating,heading,content} = req.body
+const addReview = (async (req, res) => {
+    let { userName, movieID, rating, heading, content } = req.body
     let sql = `SELECT ID FROM MYMOVIES.USERS
                 WHERE MYMOVIES.USERS.USERNAME = '${userName}'`
     let userID = await SQLexecuter(sql)
@@ -103,7 +103,7 @@ const addReview = (async(req,res) => {
                     MYMOVIES.USER_REVIEW.USERID = ${userID}`
         let updateReview = await SQLexecuter(sql2)
     }
-    else{
+    else {
         // now we add the review to the database.
         let sql3 = `INSERT INTO MYMOVIES.USER_REVIEW
                     VALUES(${movieID},${userID},'${heading}','${content}',${rating},DEFAULT)`
@@ -111,10 +111,38 @@ const addReview = (async(req,res) => {
     }
 
 
+    // updating the avgrating of movie table.// this is temporary fix, we have to use pl sql for more elegance.
+    let sql4 = `SELECT ROUND(NVL(AVG(RATING), 0),1) AS AVERAGE_RATING
+                FROM MYMOVIES.USER_REVIEW
+                WHERE MOVIEID = ${movieID}`
+    let avg_rating = await SQLexecuter(sql4)
+    let sql5 = `UPDATE MYMOVIES.MOVIE
+                SET MOVIE.AVGRATING = ${avg_rating.rows[0].AVERAGE_RATING}
+                WHERE MOVIE.ID = ${movieID}`
+    let updateAvgRating = await SQLexecuter(sql5)
+
+
+
+
     return res.json({ redirectURL: "/home" })
+})
+
+
+const getRating = (async(req,res) => {
+
+})
+
+const getReviews = (async(req,res) => {
+    let movieID = req.query.ID
+    let sql = `SELECT UR.*,U.USERNAME 
+                FROM MYMOVIES.USER_REVIEW UR JOIN MYMOVIES.USERS U ON UR.USERID = U.ID
+                WHERE UR.MOVIEID = ${movieID} AND
+                UR.CONTENT != ' '`
+    let reviews = await SQLexecuter(sql)
+    return reviews
 })
 
 
 
 
-export{getMovieInfo,getMovieGenreInfo,getMovieAwardInfo,getCastInfo,getDirectorInfo,addReview}
+export { getMovieInfo, getMovieGenreInfo, getMovieAwardInfo, getCastInfo, getDirectorInfo, addReview, getReviews }
