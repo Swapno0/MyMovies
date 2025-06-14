@@ -47,6 +47,7 @@ import homeRouter from "./routes/home.routes.js"
 import adminRouter from "./routes/admin.routes.js"
 import movieRouter from "./routes/movie.routes.js"
 import profileRouter from "./routes/profile.routes.js"
+import celebRouter from "./routes/celeb.routes.js"
 
 // Sends to appropriate router.
 app.use("/",userRouter)
@@ -54,6 +55,7 @@ app.use("/home",homeRouter)
 app.use("/admin",adminRouter)
 app.use("/movie",movieRouter)
 app.use("/profile",profileRouter)
+app.use("/celeb",celebRouter)
 
 /*<<<<<---------------------------------------------------------------------------------------------------------------------------------->>>>>*/
 

@@ -1,0 +1,141 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.heading{
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    margin-top: 50px;
+    margin: 50px;
+    margin-bottom: 40px;
+}
+
+.backBtn{
+    height: 40px;
+    width: 80px;
+    background-color: rgba(255, 255, 255, 0.115);
+    backdrop-filter: blur(2px);
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    margin-left: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    /* right: 250px; */
+    /* bottom: 230px; */
+    /* z-index: 800; */
+}
+.backBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+
+.celebContainer{
+    margin: 0 50px;
+}
+.celebContainer .celebName{
+    font-size: xx-large;
+    font-weight: 600;
+    padding-bottom: 5px;
+    font-family: sans-serif;
+}
+.celebContainer .celebType{
+    font-weight: 100;
+    color: rgb(186, 186, 186);
+    padding-bottom: 20px;
+}
+
+.celebContainer .avatar{
+    border-radius: 5px;
+}
+.celebContainer .bio_award{
+    height: 350px;
+    margin: 0 30px;
+    /* background-color: blue; */
+    /* overflow-y: scroll; */
+}
+
+.celebContainer .bio_award .bio{
+    max-height: 237px;
+    /* background-color: blue; */
+    overflow-y: scroll;
+}
+
+
+.celebAwardContainer{
+    margin-top: 27px;
+    
+}
+
+.celebAward{
+    overflow-x: scroll;
+}
+
+.celebAwardBox{
+    padding: 20px;
+    background-color: rgb(13, 13, 13);
+    margin-right: 20px;
+    border-radius: 5px;
+}
+.celebAwardBox .awardName{
+    font-size: larger;
+
+}
+.celebAwardBox .movieName{
+    font-size: medium;
+    color: rgb(210, 210, 210);
+    padding-top: 5px;
+}
+
+
+.celebMovieContainer{
+    margin: 0 50px;
+}
+
+.celebMovieContainer .celebMovieBox{
+    background-color: rgb(12, 12, 12);
+    margin: 20px 0;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    border-radius: 7px;
+}
+.celebMovieContainer .celebMovieBox:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.celebMovieBox img{
+    border-radius: 7px;
+}
+
+.celebMovieBox .title_role{
+    padding-left: 30px;
+    padding-top: 15px;
+}
+.celebMovieBox .title{
+    font-size: larger;
+    font-weight: 900;
+    padding-bottom: 5px;
+    font-family: 'Roboto';
+}
+.celebMovieBox .role{
+    color: rgb(182, 182, 182);
+}

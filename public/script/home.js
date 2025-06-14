@@ -101,6 +101,19 @@ async function main() {
 }
 main();
 
-let allMoviesInnerContainer = document.querySelectorAll(".moviesInnerContainer")
+// let allMoviesInnerContainer = document.querySelectorAll(".moviesInnerContainer")
+
+
+
+
+
+
+// Adding functionality to clicking on celebs.
+document.querySelectorAll(".celebs").forEach(celeb => {
+    celeb.addEventListener("click", () => {
+        let celebID = celeb.querySelector(".celebID").innerText
+        window.location.href = `/celeb?ID=${celebID}`
+    })
+})
 
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/celeb.css">
+    <link rel="stylesheet" href="/css/util.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="backBtn flex align justify cursor"><<<</div>
+    <div class="celebContainer">
+        <div class="celebBox">
+            <div class="celebName"><%= celebInfo.rows[0].NAME %></div>
+            <% if (celebTypeInfo.rows.length == 2) { %>
+                <div class="celebType">Actor/Director</div>
+            <% } %>
+            <% if (celebTypeInfo.rows.length == 1) { %>
+                <div class="celebType"><%= celebTypeInfo.rows[0].CELEBTYPE %></div>
+            <% } %>
+
+            <div class="avatar_bio_award flex align">
+                <img class="avatar" src="<%= celebInfo.rows[0].AVATAR %>" alt="" height="350px">
+                <div class="bio_award">
+                    <div class="bio">
+                        <h1>Biography</h1>
+                        <%= celebInfo.rows[0].BIO %>
+                    </div>
+                    <div class="celebAwardContainer">
+                        <div class="celebAward flex align">
+                            <% for( let index = 0; index < celebAwardInfo.rows.length; index++ ) { %>
+                                <div class="celebAwardBox">
+                                    <div class="awardName"><%= celebAwardInfo.rows[index].AWARD_NAME %> | <%= celebAwardInfo.rows[index].RECIEVEDATE %></div>
+                                    <div class="movieName"><%= celebAwardInfo.rows[index].TITLE %></div>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="heading">Known For</div>
+    <div class="celebMovieContainer">
+        <div class="celebMovie">
+            <% for( let index = 0; index < celebMovieInfo.rows.length; index++ ) { %>
+            <div class="celebMovieBox flex cursor">
+                <div class="movieID" hidden><%= celebMovieInfo.rows[index].ID %></div>
+                <div class="poster_title_role flex">
+                    <img src="<%= celebMovieInfo.rows[index].POSTER %>" alt="" class="moviePoster" height="100px">
+                    <div class="title_role">
+                        <div class="title"><%= celebMovieInfo.rows[index].TITLE %></div>
+                        <% if (celebMovieInfo.rows[index].ROLE == "None") { %>
+                            <div class="role">Director</div>
+                        <% } else { %>
+                            <div class="role"><%= celebMovieInfo.rows[index].ROLE %></div>
+                        <% } %>
+                    </div>
+                </div>
+
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+
+
+    <script src="/script/celeb.js"></script>
+</body>
+</html>

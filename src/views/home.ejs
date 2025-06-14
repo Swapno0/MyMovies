@@ -17,7 +17,7 @@
 
 
     <!-- Newly Added Section -->
-     <div class="heading">Newly Added</div>
+     <div class="heading">TRENDING</div>
     <div class="newlyAdded flex justify">
         <div class="moviesContainer flex">
             <% for( let index = 0; index < newlyAddedMovies.rows.length; index++ ) { %>
@@ -73,7 +73,7 @@
         <div class="celebsContainer flex">
             <% for( let index = 0; index < mostPopularCelebrities.rows.length; index++ ) { %>
                 <div class="celebs flex flex_col align cursor">
-                    <dic class="celebID" hidden><%= mostPopularCelebrities.rows[index].ID %></dic>
+                    <div class="celebID" hidden><%= mostPopularCelebrities.rows[index].ID %></div>
                     <img src="<%= mostPopularCelebrities.rows[index].AVATAR %>" alt="" height="200px" width="160px">
                     <div class="celebName"><%= mostPopularCelebrities.rows[index].NAME %></div>
                 </div>

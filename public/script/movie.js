@@ -111,6 +111,24 @@ main();
 
 
 
+// adding functionality to celebs and director.
+document.querySelectorAll(".castInfoBox").forEach(cast => {
+  cast.addEventListener("click", () => {
+    let castID = cast.querySelector(".castID").innerText
+    window.location.href = `/celeb?ID=${castID}`
+  })
+})
+
+document.querySelectorAll(".dirbox").forEach(director => {
+  director.addEventListener("click", () => {
+    let directorID = director.querySelector(".directorID").innerText
+    window.location.href = `/celeb?ID=${directorID}`
+  })
+})
+
+
+
+
 
 
 
