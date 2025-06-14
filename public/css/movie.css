@@ -131,6 +131,9 @@ li{
     font-size: xx-large;
     font-weight: 400;
 }
+.basicInfoContainer .basicInfoBox .rating_watchlist .bookmark{
+    margin-left: 20px;
+}
 
 
 .basicInfoContainer .basicInfoBox .description{

@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+
+body{
+    background-color: black;
+    color: white;
+    
+}
+
+.backBtn{
+    height: 40px;
+    width: 80px;
+    background-color: rgba(255, 255, 255, 0.115);
+    backdrop-filter: blur(2px);
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    font-weight: 800;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+    /* margin-left: 40px; */
+    /* margin-top: 20px; */
+    margin-bottom: 10px;
+    position: relative;
+    /* right: 250px; */
+    /* bottom: 230px; */
+    /* z-index: 800; */
+}
+.backBtn:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.basicInfoContainer{
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    background-image: linear-gradient(to top right,rgb(215, 54, 54),rgb(248, 109, 109));
+}
+
+.basicInfoContainer .basicInfo{
+    gap: 20px;
+}
+
+.basicInfoContainer .basicInfo .avatar img{
+    border-radius: 50px;
+}
+.basicInfoContainer .basicInfo .userName{
+    font-size: xx-large;
+    font-weight: 900;
+    font-family: sans-serif;
+}
+.basicInfoContainer .basicInfo .joinDate{
+    font-weight: 100;
+    font-family: 'Roboto';
+    color: rgb(181, 181, 181);
+}
+
+.basicInfoContainer .basicInfo .bio{
+    margin-top: 30px;
+    /* background-color: blue; */
+    padding-right: 30px;
+    width: 78vw;
+    height: 156px;
+    overflow-y: scroll;
+    color: rgb(212, 212, 212);
+}
+
+.heading{
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 50px;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+
+.moviesContainer{
+    overflow-x: scroll;
+    width: 95%;
+}
+
+.moviesContainer .moviesInnerContainer{
+    position: relative;
+}
+
+
+.moviesContainer .movies{
+    background-color: rgb(19, 19, 19);
+    padding: 10px 6px;
+    padding-top: 0;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+    width: 162px;
+    height: 315px;
+    /* position: relative; */
+}
+.moviesContainer .movies:hover{
+    background-color: rgb(229, 82, 82);
+}
+.moviesContainer .movies .poster{
+    border-radius: 2px;
+}
+
+
+
+.moviesContainer .movies .rating{
+    width: 100%;
+    justify-content: flex-start;
+    padding: 5px;
+    gap: 10px;
+    font-family: sans-serif;
+}
+.moviesContainer .movies .rating .rateNum{
+    position: relative;
+    top: 1px;
+    font-family: 'Roboto';
+    font-size: medium;
+}
+.moviesContainer .movies .movieTitle{
+    padding-top: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    max-width: 150px;
+}

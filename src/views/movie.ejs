@@ -10,7 +10,8 @@
 <body>
     <div class="movieInfoContainer">
         <div class="imageContainer flex align">
-            <a href="/home" class="anchor"><div class="backBtn flex align justify cursor"><<<</div></a>
+            <!-- <a href="/home" class="anchor"><div class="backBtn flex align justify cursor"><<<</div></a> -->
+            <div class="backBtn flex align justify cursor"><<<</div>
             <img class="poster" src="<%= movieInfo.rows[0].POSTER %>" alt="" crossorigin="anonymous" height="500px">
             <img class="coverPhoto" src="<%= movieInfo.rows[0].COVERPHOTO %>" alt="" crossorigin="anonymous" >
         </div>
@@ -32,8 +33,13 @@
 
                 <div class="rating_watchlist flex align">
                     <!-- adding functionality to rate and add to watchlist options in these here parts -->
+                    
                     <img class="star" src="/images/icons/star.png" alt="" height="50px">
                     <div class="rating_number"><%= movieInfo.rows[0].AVGRATING %> / 10</div>
+                    <svg class="bookmark" height="50" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" fill="rgba(0, 0, 0, 0.539)">
+                        <path d="M0 0 H100 V130 L50 110 L0 130 Z" />
+                    </svg>
+                    
                 </div>
 
                 <div class="description">

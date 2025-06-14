@@ -128,6 +128,89 @@ const addReview = (async (req, res) => {
 })
 
 
+
+
+const getWatchList = (async(req,res) => {
+    let userName = req.session.userid
+    let sql = `SELECT ID FROM MYMOVIES.USERS
+                WHERE MYMOVIES.USERS.USERNAME = '${userName}'`
+    let userID = await SQLexecuter(sql)
+    userID = userID.rows[0].ID
+
+    let sql1 = `SELECT * FROM MYMOVIES.WATCHLIST
+                WHERE MYMOVIES.WATCHLIST.USERID = ${userID}
+                ORDER BY MYMOVIES.WATCHLIST.ADDEDDATE DESC`
+    let watchList = await SQLexecuter(sql1)
+    return watchList
+})
+
+
+
+const addToWatchList = (async (req, res) => {
+    let {movieID } = req.body
+    let userName = req.session.userid
+    // console.log(userName)
+    let sql = `SELECT ID FROM MYMOVIES.USERS
+                WHERE MYMOVIES.USERS.USERNAME = '${userName}'`
+    let userID = await SQLexecuter(sql)
+    userID = userID.rows[0].ID
+
+    // At first check if the movie already was in the watchHistory or not.
+    let sql1 = `SELECT * 
+                FROM MYMOVIES.WATCHLIST W JOIN MYMOVIES.USERS U ON W.USERID = U.ID
+                WHERE W.MOVIEID = ${movieID} AND
+                U.USERNAME = '${userName}' `
+    let checkExistMovie = await SQLexecuter(sql1)
+
+    // If doesnt exist, add to watchlist
+    if (checkExistMovie.rows.length == 1) {
+    }
+    else {
+        let sql3 = `INSERT INTO MYMOVIES.WATCHLIST
+                    VALUES(${movieID},${userID},DEFAULT)`
+        let newMovieAdded = await SQLexecuter(sql3)
+    }
+
+
+    return res.json({})
+})
+
+
+
+
+const removeFromWatchList = (async (req, res) => {
+    let {movieID } = req.body
+    let userName = req.session.userid
+    let sql = `SELECT ID FROM MYMOVIES.USERS
+                WHERE MYMOVIES.USERS.USERNAME = '${userName}'`
+    let userID = await SQLexecuter(sql)
+    userID = userID.rows[0].ID
+
+    // At first check if the movie already was in the watchList or not.
+    let sql1 = `SELECT * 
+                FROM MYMOVIES.WATCHLIST W JOIN MYMOVIES.USERS U ON W.USERID = U.ID
+                WHERE W.MOVIEID = ${movieID} AND
+                U.USERNAME = '${userName}' `
+    let checkExistMovie = await SQLexecuter(sql1)
+
+    // If does exist, remove from watchlist
+    if (checkExistMovie.rows.length == 1) {
+        let sql3 = `DELETE FROM MYMOVIES.WATCHLIST
+                    WHERE MYMOVIES.WATCHLIST.USERID = ${userID} AND
+                    MYMOVIES.WATCHLIST.MOVIEID = ${movieID}`
+        let newMovieAdded = await SQLexecuter(sql3)
+    }
+
+    return res.json({})
+})
+
+
+
+
+
+
+
+
 const getRating = (async(req,res) => {
 
 })
@@ -145,4 +228,4 @@ const getReviews = (async(req,res) => {
 
 
 
-export { getMovieInfo, getMovieGenreInfo, getMovieAwardInfo, getCastInfo, getDirectorInfo, addReview, getReviews }
+export { getMovieInfo, getMovieGenreInfo, getWatchList, addToWatchList, removeFromWatchList, getMovieAwardInfo, getCastInfo, getDirectorInfo, addReview, getReviews }

@@ -12,7 +12,7 @@ document.querySelectorAll(".movies").forEach(movie => {
             {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ movieID, userName })
+            body: JSON.stringify({ movieID, userName})
         })
         window.location.href = `/movie?ID=${movieID}`
     })

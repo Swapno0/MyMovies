@@ -3,9 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profilePage.css">
+    <link rel="stylesheet" href="/css/util.css">
     <title>Document</title>
 </head>
 <body>
-    this is my profile page.
+    <div class="basicInfoContainer">
+        <a href="/home" class="anchor"><div class="backBtn flex align justify cursor"><<<</div></a>
+        <div class="basicInfo flex">
+            <div class="avatar"><img src="<%= userInfo.rows[0].AVATAR %>" alt="" height="250px" width="250px"></div>
+            <div class="otherInfo">
+                <div class="userName"><%= userInfo.rows[0].USERNAME %></div>
+                <div class="joinDate">Joined since <%= userInfo.rows[0].CREATIONDATE.split("-")[0] %> <%= userInfo.rows[0].CREATIONDATE.split("-")[1] %></div>
+                <div class="bio"><%= userInfo.rows[0].BIO %></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="heading">WATCHLIST</div>
+    <div class="watchList flex justify">
+        <div class="moviesContainer flex align">
+            <% for( let index = 0; index < watchList.rows.length; index++ ) { %>
+            <div class="moviesInnerContainer">
+                <div class="movies flex flex_col align justify cursor">
+                    <div class="movieID" hidden><%= watchList.rows[index].ID %></div>
+                    <img class="poster" src="<%= watchList.rows[index].POSTER %>" alt="" height="225px" width="150px">
+
+                    <div class="rating flex align">
+                        <img src="/images/icons/star.png" alt="" height="15px">
+                        <div class="rateNum"><%= watchList.rows[index].AVGRATING %></div>
+                    </div>
+                    <div class="movieTitle"><%= watchList.rows[index].TITLE %></div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="heading">WATCH HISTORY</div>
+    <div class="watchHistory flex justify">
+        <div class="moviesContainer flex align">
+            <% for( let index = 0; index < watchHistory.rows.length; index++ ) { %>
+            <div class="moviesInnerContainer">
+                <div class="movies flex flex_col align justify cursor">
+                    <div class="movieID" hidden><%= watchHistory.rows[index].ID %></div>
+                    <img class="poster" src="<%= watchHistory.rows[index].POSTER %>" alt="" height="225px" width="150px">
+
+                    <div class="rating flex align">
+                        <img src="/images/icons/star.png" alt="" height="15px">
+                        <div class="rateNum"><%= watchHistory.rows[index].AVGRATING %></div>
+                    </div>
+                    <div class="movieTitle"><%= watchHistory.rows[index].TITLE %></div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+
+
+
+    <script src="/script/profile.js"></script>
 </body>
 </html>

@@ -107,7 +107,8 @@ const getWatchList = (async(req,res) => {
     userID = userID.rows[0].ID
 
     let sql1 = `SELECT * FROM MYMOVIES.WATCHLIST
-                WHERE MYMOVIES.WATCHLIST.USERID = ${userID}`
+                WHERE MYMOVIES.WATCHLIST.USERID = ${userID}
+                ORDER BY MYMOVIES.WATCHLIST.ADDEDDATE DESC`
     let watchList = await SQLexecuter(sql1)
     return watchList
 })

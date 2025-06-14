@@ -17,10 +17,12 @@
             <img class="invert cursor" src="/images/icons/cross_icon.svg" alt="">
         </div>
         <!-- profile_box     MAKE THIS PROFILE BOX IN HAMBURGER MENU ALONG WITH LOGOUT BUTTON -->
-        <div class="profile_box flex align cursor">
-            <div class="name"><%= loggedInUser.rows[0].USERNAME %></div>
-            <img class="invert" src="/images/icons/user_icon.svg" alt="">
-        </div>
+        <a href="/profile" class="anchor">
+            <div class="profile_box flex align cursor">
+                <div class="name"><%= loggedInUser.rows[0].USERNAME %></div>
+                <img class="invert" src="/images/icons/user_icon.svg" alt="">
+            </div>
+        </a>
 
         <!-- a line -->
         <div id="line1" class="line"></div>

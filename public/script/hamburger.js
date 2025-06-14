@@ -13,3 +13,6 @@ document.querySelector(".cross_btn").addEventListener("click", () => {
     document.querySelector(".box").classList.add("hamburger_close");
     document.querySelector(".box").classList.remove("hamburger_pop");
 })
+
+
+// Adding functionality to clicking on profile.
