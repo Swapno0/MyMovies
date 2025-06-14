@@ -15,4 +15,61 @@ document.querySelector(".cross_btn").addEventListener("click", () => {
 })
 
 
-// Adding functionality to clicking on profile.
+// Adding functionality to searchbar.
+let allMovies
+let allCelebs
+async function bringInfo () {
+    let response = await fetch("/searchShow")
+    let data = await response.json()
+    allMovies = data.allMovies
+    allCelebs = data.allCelebs
+}
+bringInfo()
+document.querySelector(".search_bar input").addEventListener("input", async function() {
+    let input = this.value
+    let content = ""
+    if (input == "") {
+        content = ""
+    }
+    else{
+        for (let index = 0; index < allMovies.rows.length; index++) {
+            if (allMovies.rows[index].TITLE.includes(input)) {
+                content += `<div class = "searchedMovieBox flex align cursor">
+                                <div class = "s_movieID" hidden>${allMovies.rows[index].ID}</div>
+                                <img src="${allMovies.rows[index].POSTER}" height="85px">
+                                
+                                <div class = "s_movieName">${allMovies.rows[index].TITLE}</div>
+                            </div>
+                            `
+            }
+        }
+        for (let index = 0; index < allCelebs.rows.length; index++) {
+            if (allCelebs.rows[index].NAME.includes(input)) {
+                content += `<div class = "searchedCelebBox flex align cursor">
+                                <div class = "s_celebID" hidden>${allCelebs.rows[index].ID}</div>
+                                <img src="${allCelebs.rows[index].AVATAR}" height="85px" width="70px">
+                                
+                                <div class = "s_celebName">${allCelebs.rows[index].NAME}</div>
+                            </div>
+                            `
+            }
+        }
+    }
+    document.querySelector(".infoBoxes").innerHTML = content
+
+
+    // Adding functionality to searched movies and celebs.
+    document.querySelectorAll(".searchedMovieBox").forEach(movie => {
+        movie.addEventListener("click", () => {
+            let movieID = movie.querySelector(".s_movieID").innerText
+            window.location.href = `/movie?ID=${movieID}`
+        })
+    })
+    document.querySelectorAll(".searchedCelebBox").forEach(celeb => {
+        celeb.addEventListener("click", () => {
+            let celebID = celeb.querySelector(".s_celebID").innerText
+            window.location.href = `/celeb?ID=${celebID}`
+        })
+    })
+
+})

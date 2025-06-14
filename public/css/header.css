@@ -105,6 +105,10 @@
     width: 24px;
 }
 
+.header .search_bar{
+    justify-content: flex-start;
+}
+
 .header .search_bar button{
     height: 44px;
     width: 400px;
@@ -143,5 +147,62 @@
     font-size: medium;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(35, 35, 35);
+}
+
+
+
+.infoBoxes{
+    z-index: 700;
+    position: absolute;
+    top: 52px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+.searchedMovieBox{
+    width: 400px;
+    background-color: rgb(13, 13, 13);
+    height: 85px;
+    /* padding: 20px; */
+    margin-bottom: 1px;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+}
+.searchedMovieBox:hover{
+    background-color: rgb(32, 32, 32);
+}
+
+.searchedMovieBox img{
+    border-radius: 5px;
+}
+.searchedMovieBox .s_movieName{
+    padding-left: 20px;
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: 500;
+}
+
+
+
+.searchedCelebBox{
+    width: 400px;
+    background-color: rgb(13, 13, 13);
+    height: 85px;
+    /* padding: 20px; */
+    margin-bottom: 1px;
+    border-radius: 5px;
+    transition: all 0.3s ease-out;
+}
+.searchedCelebBox:hover{
+    background-color: rgb(32, 32, 32);
+}
+
+.searchedCelebBox img{
+    border-radius: 5px;
+}
+.searchedCelebBox .s_celebName{
+    padding-left: 20px;
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: 500;
 }
 

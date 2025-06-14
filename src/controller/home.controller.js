@@ -178,8 +178,4 @@ const removeFromWatchList = (async (req, res) => {
 
 
 
-
-
-
-
 export { getNewlyAddedMovies, getTopRatedMovies, getMostPopularCelebrities, getTopPicksMovies, getWatchHistory, addToWatchHistory,getWatchList, addToWatchList,removeFromWatchList }
