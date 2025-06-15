@@ -1,7 +1,7 @@
 // Functionality on clicking the back button.
-document.querySelector(".backBtn").addEventListener("click", () => {
-  window.location.href = `/home`
-})
+// document.querySelector(".backBtn").addEventListener("click", () => {
+//   window.location.href = `/home`
+// })
 
 
 

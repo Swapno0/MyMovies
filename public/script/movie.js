@@ -1,7 +1,7 @@
 // Functionality on clicking the back button.
 document.querySelector(".backBtn").addEventListener("click", () => {
   let previousPage = document.referrer
-  console.log(previousPage)
+  let currentPage = window.location.href
   window.location.href = previousPage
 })
 

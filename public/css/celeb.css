@@ -50,6 +50,7 @@ body{
 
 .celebContainer{
     margin: 0 50px;
+    margin-top: 50px;
 }
 .celebContainer .celebName{
     font-size: xx-large;

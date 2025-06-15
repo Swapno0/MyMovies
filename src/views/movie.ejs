@@ -8,10 +8,13 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include('./components/header.ejs') %>
+
+
     <div class="movieInfoContainer">
         <div class="imageContainer flex align">
-            <!-- <a href="/home" class="anchor"><div class="backBtn flex align justify cursor"><<<</div></a> -->
-            <div class="backBtn flex align justify cursor"><<<</div>
+            <a href="/home" class="anchor" hidden><div class="backBtn flex align justify cursor"><<<</div></a>
+            <!-- <div class="backBtn flex align justify cursor"><<<</div> -->
             <img class="poster" src="<%= movieInfo.rows[0].POSTER %>" alt="" crossorigin="anonymous" height="500px">
             <img class="coverPhoto" src="<%= movieInfo.rows[0].COVERPHOTO %>" alt="" crossorigin="anonymous" >
         </div>

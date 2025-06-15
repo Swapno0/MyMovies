@@ -23,6 +23,10 @@ body{
     color: white;
 }
 
+.wallpaperCarousel{
+    margin-top: 60px;
+}
+
 .moviesContainer{
     overflow-x: scroll;
     width: 95%;
