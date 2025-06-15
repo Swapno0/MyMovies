@@ -137,7 +137,7 @@ searchBox.addEventListener("input", function () {
     // console.log(input)
     for (celeb of document.querySelectorAll(".celebShowBox .castBox")) {
 
-        if (celeb.querySelector(".name").innerText.includes(input)) {
+        if (celeb.querySelector(".name").innerText.toLowerCase().includes(input.toLowerCase())) {
             console.log(200)
             celeb.style.display = ""
         } else {
@@ -317,7 +317,7 @@ searchBox_d.addEventListener("input", function () {
     // console.log(input)
     for (celeb of document.querySelectorAll(".updateDirectorInfo .celebShowBox .directorBox")) {
 
-        if (celeb.querySelector(".name").innerText.includes(input)) {
+        if (celeb.querySelector(".name").innerText.toLowerCase().includes(input.toLowerCase())) {
             console.log(200)
             celeb.style.display = ""
         } else {

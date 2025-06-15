@@ -33,7 +33,7 @@ document.querySelector(".search_bar input").addEventListener("input", async func
     }
     else{
         for (let index = 0; index < allMovies.rows.length; index++) {
-            if (allMovies.rows[index].TITLE.includes(input)) {
+            if (allMovies.rows[index].TITLE.toLowerCase().includes(input.toLowerCase())) {
                 content += `<div class = "searchedMovieBox flex align cursor">
                                 <div class = "s_movieID" hidden>${allMovies.rows[index].ID}</div>
                                 <img src="${allMovies.rows[index].POSTER}" height="85px">
@@ -44,7 +44,7 @@ document.querySelector(".search_bar input").addEventListener("input", async func
             }
         }
         for (let index = 0; index < allCelebs.rows.length; index++) {
-            if (allCelebs.rows[index].NAME.includes(input)) {
+            if (allCelebs.rows[index].NAME.toLowerCase().includes(input.toLowerCase())) {
                 content += `<div class = "searchedCelebBox flex align cursor">
                                 <div class = "s_celebID" hidden>${allCelebs.rows[index].ID}</div>
                                 <img src="${allCelebs.rows[index].AVATAR}" height="85px" width="70px">

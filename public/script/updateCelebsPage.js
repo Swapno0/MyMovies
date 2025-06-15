@@ -4,6 +4,31 @@ let awardID
 let awardName
 
 
+
+
+// Adding functionality to search the movies.
+document.querySelector(".movieSearchBox input").addEventListener("input",function() {
+    let input = this.value
+    for(let movie of document.querySelectorAll(".movieInfo"))
+    {
+        if (movie.querySelector(".movieName").innerText.toLowerCase().includes(input.toLowerCase())) {
+            movie.style.display = ""
+        } else {
+            movie.style.display = "none"
+        }
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
 // Initially adding celebAward into celeb_award_set
 document.querySelectorAll(".awardInfoContainer .awardContainer").forEach(box => {
     const movieID = box.querySelector(".awardInfo .id_name_date .movieID").innerText

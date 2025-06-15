@@ -112,13 +112,15 @@
 .header .search_bar button{
     height: 44px;
     width: 400px;
-    background-color:rgb(229, 82, 82);
+    /* background-color:rgb(229, 82, 82); */
+    background-image: linear-gradient(to right,rgb(224, 61, 61),rgb(229, 82, 82));
     border: none;
     border-radius: 30px;
     padding: 10px;
 }
 .header .search_bar button:hover{
-    background-color:rgb(255, 38, 38);
+    /* background-color:rgb(255, 38, 38); */
+    background-image: linear-gradient(to right,rgb(255, 38, 38),rgb(255, 75, 75));
 }
 .header .search_bar button img{
     height: 24px;

@@ -45,6 +45,27 @@
 
 
 
+    <div class="heading">YOUR REVIEWS</div>
+    <div class="reviewContainer">
+        <div class="reviewStream flex align">
+            <% for( let index = 0; index < userReviews.rows.length; index++ ) { %>
+                <div class="reviewBox">
+                    <div class="userID" hidden><%= userReviews.rows[index].USERID %></div>
+                    <div class="movieID" hidden><%= userReviews.rows[index].MOVIEID %></div>
+                    <div class="box flex">
+                        <div class="box2 flex align">
+                            <img src="/images/icons/small_star.png" alt="" height="15px">
+                            <div class="ratingNum"><%= userReviews.rows[index].RATING %></div>
+                        </div>
+                        <div class="movieName"><%= userReviews.rows[index].TITLE %></div>
+                    </div>
+                    <div class="head"><%= userReviews.rows[index].HEADING %></div>
+                    <div class="content"><%= userReviews.rows[index].CONTENT %></div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
 
 
 

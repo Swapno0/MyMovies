@@ -277,6 +277,7 @@ li{
     
     overflow-y: hidden;
     /* text-overflow: ellipsis; */
+    /* min-height: fit-content; */
 }
  .reviewContainer .reviewBox .box{
     gap: 15px;
@@ -303,8 +304,9 @@ li{
  .reviewContainer .reviewBox .content{
     color: rgb(216, 216, 216);
     font-family: sans-serif;
-    /* height: 200px; */
+    /* height: 20px; */
     /* background-color: aqua; */
-    /* height: 115px; */
+    height: 87px;
+    overflow-y: scroll;
     
  }

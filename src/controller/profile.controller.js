@@ -56,7 +56,22 @@ const getWatchList = (async(req,res) => {
 })
 
 
+const getUserReviews = (async(req,res) => {
+    let userName = req.session.userid
+    let sql = `SELECT ID FROM MYMOVIES.USERS
+                WHERE MYMOVIES.USERS.USERNAME = '${userName}'`
+    let userID = await SQLexecuter(sql)
+    userID = userID.rows[0].ID
+
+    let sql1 = `SELECT * 
+                FROM MYMOVIES.USER_REVIEW UR JOIN MYMOVIES.MOVIE M ON UR.MOVIEID = M.ID
+                WHERE UR.USERID = ${userID}`
+    let userReviews = await SQLexecuter(sql1)
+    return userReviews
+})
 
 
 
-export {getUserInfo,getWatchHistory,getWatchList}
+
+
+export {getUserInfo,getWatchHistory,getWatchList,getUserReviews}
