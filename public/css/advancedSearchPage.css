@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* scrollbar-width: none; */
+}
+*::-webkit-scrollbar{
+    width: 0px;
+}
+
+body{
+    background-color: black;
+    color: white;
+}
+
+.heading{
+    font-size: larger;
+    font-weight: 500;
+    font-family: 'poppins';
+    margin: 0 0 20px 0;
+}
+
+
+.container{
+    position: relative;
+    top: 35px;
+    display: flex;
+    gap: 10px;
+    height: 90vh;
+    margin: 20px;
+}
+
+.container .left{
+    background-color: rgb(20, 20, 20);
+    width: 60%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.left .genreContainer{
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.left .genreContainer .genreName{
+    height: 40px;
+    width: 100px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+    border-radius: 6px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+.left .genreContainer .genreName:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.left .languageContainer{
+    gap: 30px;
+    margin-bottom: 40px;
+}
+.left .languageContainer .languageName{
+    height: 40px;
+    width: 100px;
+    color: white;
+    background-color: rgb(12, 12, 12);
+    border-radius: 6px;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+.left .languageContainer .languageName:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+
+.left .durationBar {
+    position: relative;
+    height: 2px;
+    width: 99%;
+    background-color: rgb(255, 255, 255);
+    margin: 5px auto;
+    margin-bottom: 10px;
+}
+.left .circle{
+    position: relative;
+    bottom: 7px;
+    left: 00%;
+    height: 16px;
+    width: 16px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.left .field{
+    background-color: rgb(12, 12, 12);
+    width: 300px;
+    height: 40px;
+    border-radius: 6px;
+    justify-content: flex-start;
+    margin: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 1px 5px rgba(255, 255, 255, 0.171);
+    transition: all 0.3s ease;
+}
+.left .field:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 2px 8px rgba(255, 255, 255, 0.201);
+}
+.container .field input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-color: rgba(240, 248, 255, 0);
+    outline: none;
+    padding-left: 10px;
+    width: 300px;
+    height: 40px;
+    color: azure;
+}
+.container .filterBtn{
+    padding: 15px;
+    border-radius: 4px;
+    background-color: rgb(38, 35, 35);
+    width: fit-content;
+    position: relative;
+    top: 5px;
+    left: 700px;
+}
+
+
+
+.container .right{
+    height: 100%;
+    width: 40%;
+    background-color: rgb(20, 20, 20);
+    border-radius: 5px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+
+.right .allMovieContainer .movieContainer{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgb(13, 13, 13);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.right .allMovieContainer .movieContainer:hover{
+    background-color: rgb(23, 23, 23);
+
+}
+
+.right .allMovieContainer .movieContainer .movieName{
+    position: relative;
+    left: 100px;
+    font-size: larger;
+    font-weight: 200;
+}

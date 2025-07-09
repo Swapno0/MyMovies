@@ -157,6 +157,7 @@ body{
     background-color: rgb(12, 12, 12);
     min-width: 450px;
     min-height: 240px;
+    max-height: 240px;
     border-radius: 6px;
     /* justify-content: flex-start; */
     /* margin: 8px; */

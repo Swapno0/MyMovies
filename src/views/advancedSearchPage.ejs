@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/advancedSearchPage.css">
+    <link rel="stylesheet" href="/css/util.css">
+</head>
+
+<body>
+    <%- include('./components/header.ejs') %>
+
+        <div class="container">
+            <!-- The filter mechanisms -->
+            <div class="left">
+                <div class="heading">Genre</div>
+                <div class=" genreFilter">
+                    <div class="genreContainer flex justify wrap">
+                        <% for( let i=0; i < allGenre.rows.length; i++ ) { %>
+                            <div class="genreName cursor flex justify align">
+                                <div class="genreID" hidden>
+                                    <%= allGenre.rows[i].ID %>
+                                </div>
+                                <%= allGenre.rows[i].TITLE %>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+
+                <div class="heading">Language</div>
+                <div class=" languageFilter">
+                    <div class="languageContainer flex justify wrap">
+                        <% for( let i=0; i < allLanguage.rows.length; i++ ) { %>
+                            <div class="languageName cursor flex justify align">
+                                <div class="languageID" hidden>
+                                    <%= allLanguage.rows[i].ID %>
+                                </div>
+                                <%= allLanguage.rows[i].TITLE %>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+                <div class="heading">Duration</div>
+                <div class="durationFilter field">
+                    <input class="" type="text" placeholder="Less than or Equal to in mins">
+                </div>
+                <div class="heading">Rating</div>
+                <div class="ratingFilter field">
+                    <input class="" type="text" placeholder="Less than or equal to rating">
+                </div>
+                <div class="heading">Release Time</div>
+                <div class="boxes flex">
+                    <div class="releaseDateFilter1 field">
+                        <input class="" type="text" placeholder="From: MM/DD/YYYY">
+                    </div>
+                    <div class="releaseDateFilter2 field">
+                        <input class="" type="text" placeholder="To: MM/DD/YYYY">
+                    </div>
+                </div>
+
+                <div class="filterBtn cursor"> Filter </div>
+            </div>
+
+
+            <!-- This is where movies are shown as bars -->
+            <div class="right">
+                <div class="allMovieContainer flex flex_col">
+
+                </div>
+            </div>
+        </div>
+
+        <script src="/script/advancedSearchPage.js"></script>
+</body>
+
+</html>

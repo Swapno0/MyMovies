@@ -47,6 +47,18 @@
     position: relative;
     top: 60px;
 }
+
+.hamburgerBox .advSearch{
+    position: relative;
+    top: 100px;
+    left: 105px;
+    /* height: 40px; */
+    width: fit-content;
+    padding: 15px;
+    background-color: #121212;
+    border-radius: 6px;
+}
+
 .hamburgerBox #line2{
     position: relative;
     top: 320px;

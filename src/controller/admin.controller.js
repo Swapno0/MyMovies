@@ -468,6 +468,7 @@ const updateMovie = (async (req, res) => {
 
 const deleteMovie = (async (req,res) =>{
     let {movieID} = req.body
+    
     let deleteMovie_sql = `DELETE FROM MYMOVIES.MOVIE
                             WHERE MYMOVIES.MOVIE.ID = ${movieID}`
     let deletedMovie = await SQLexecuter(deleteMovie_sql)

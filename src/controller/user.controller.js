@@ -198,6 +198,7 @@ const loginUser = (async (req, res) => {
 
 
 const logoutUser = (async (req,res) => {
+    req.session.isAuth = false;
     req.session.destroy()
     res.redirect("/")
 })
