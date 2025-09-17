@@ -1,0 +1,31 @@
+Our project is called MyMovies. It is a movie rating site. The following components are present in our project.
+
+1. Movie Page - A page containing all the relevant information about a movie, like - title, release date, language, country, overview, director, top casts, awards recieved by the movie.
+
+2. Celebrity Page - A page containing all the relevant information about a celebrity - actor/director, name, biography, awards, all the movies that the celebrity worked in.
+
+3. Search Bar - A search bar that hovers on the top for all the pages of our site. Here you can search any movies and celebrities by name. The searched name doesn't have to be properly capitalized, just the spelling needs to be correct.
+
+4. Home Button - A home button that resides beside the search bar that brings user to home page whenever clicked upon.
+
+5. Side Menu - A side menu that upon clicked, emerges from the left side of the screen contains the button to go to profile page, button to perform advanced search and button to log out.
+
+6. Advanced Search - Searches movies based on multiple categories like multiple genres, language, duration and rating. Gives movies ordered by top rating that matches these categories.
+
+7. Watch History - Whenever a movie page is visited, it gets shown in the watch history of that specific user.
+
+8. Watch List - It is a folder where an user can save multiple movie page references. 
+
+9. Flag - Every movie card has a flag option. Upon clicking it, user can add the movie to watch list folder or remove from the folder.
+
+10. Review - An user can add review to a movie. Also can rate the movie out of 10. The reviews of different user are shown in the respective movie page.
+
+11. Profile - Every user has a profile section where basic information about the user is shown, like - Name, Join Date, bio, Watch history, Watch List, Reviews.
+
+12. Login/Signup/Logout - User have to login or sign up to an account to use the site. 
+
+13. Movie Categories - Movies are shown as per different categories like - newly added, trending, top rated, recommended section, watch history in the home page.
+
+14. User - An user has to login or signup to an account. User needs the following data - Name, Profile Picture, bio, email, password.
+
+15. Admin - In the admin section, the admin can add, remove, update movies and celebrities.

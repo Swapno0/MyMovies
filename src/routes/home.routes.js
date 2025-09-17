@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { upload } from "../middleware/multer.middleware.js";
-import { addToWatchHistory, addToWatchList, getMostPopularCelebrities, getNewlyAddedMovies, getTopPicksMovies, getTopRatedMovies, getWatchHistory, getWatchList, removeFromWatchList } from "../controller/home.controller.js";
+import { addToWatchHistory, addToWatchList, getForYou, getMostPopularCelebrities, getNewlyAddedMovies, getTopPicksMovies, getTopRatedMovies, getWatchHistory, getWatchList, removeFromWatchList } from "../controller/home.controller.js";
 
 const router = Router()
 
@@ -14,10 +14,11 @@ router.get("/",async (req,res) => {
     let topRatedMovies = await getTopRatedMovies()
     let mostPopularCelebrities = await getMostPopularCelebrities()
     let topPicksMovies = await getTopPicksMovies()
+    let forYouMovies = await getForYou(req,res)
     let watchHistory = await getWatchHistory(req,res)
     // console.log(watchHistory)
 
-    res.render('home',{loggedInUser,newlyAddedMovies,topRatedMovies,mostPopularCelebrities,topPicksMovies,watchHistory})
+    res.render('home',{loggedInUser,newlyAddedMovies,topRatedMovies,mostPopularCelebrities,topPicksMovies,forYouMovies,watchHistory})
   }
   else{
     res.redirect("/")

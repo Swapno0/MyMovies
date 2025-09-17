@@ -114,9 +114,32 @@
     </div>
 
     <!-- For You  -->
-    <div class="forYou">
-
+    <% if (forYouMovies.length > 7) { %>
+     
+     <div class="heading">For You</div>
+    <div class="forYou flex justify">
+        <div class="moviesContainer flex">
+            <% for( let index = 0; index < forYouMovies.length; index++ ) { %>
+                <div class="moviesInnerContainer">
+                    <div class="movieID" hidden><%= forYouMovies[index].ID %></div>
+                    <svg class="bookmark" height="50" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg" fill="#e74c3c">
+                        <path d="M0 0 H100 V130 L50 110 L0 130 Z" />
+                    </svg>
+                    <div class="movies flex flex_col align justify cursor">
+                        <div class="movieID" hidden><%= forYouMovies[index].ID %></div>
+                        <img class="poster" src="<%= forYouMovies[index].POSTER %>" alt="" height="225px" width="150px">
+    
+                        <div class="rating flex align">
+                            <img src="/images/icons/star.png" alt="" height="15px">
+                            <div class="rateNum"><%= forYouMovies[index].AVGRATING %></div>
+                        </div>
+                        <div class="movieTitle"><%= forYouMovies[index].TITLE %></div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
     </div>
+    <% } %>
 
     <!-- More to Explore  -->
     <div class="moreToExplore">

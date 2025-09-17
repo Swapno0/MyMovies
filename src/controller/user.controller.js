@@ -27,15 +27,7 @@ const registerUser = (async (req, res) => {
 
 
     // Validating the inputs
-    // if (userName === "" || userName.length > 15) {
-    //     throw new ApiError(400, "userName is required")
-    // }
-    // if (email === "") {
-    //     throw new ApiError(400, "email is required")
-    // }
-    // if (password === "") {
-    //     throw new ApiError(400, "password is required")
-    // }
+    
     if (userName === "" || userName.length > 15) {
         req.session.error = "Username must be within 0 to 15 characters"
         return res.redirect('/signup_page')
@@ -180,7 +172,7 @@ const loginUser = (async (req, res) => {
     WHERE MYMOVIES.USERS.USERNAME = '${req.session.userid}'`
     const loggedInUser = await SQLexecuter(check_login)
     req.session.loggedInUser = {loggedInUser}
-
+    // console.log(loggedInUser)
 
     // return response
     // return res.status(200).json(

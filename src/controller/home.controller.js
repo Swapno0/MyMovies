@@ -52,6 +52,51 @@ const getTopPicksMovies = (async (req, res) => {
     return topPicksMovies
 })
 
+const getForYou = (async (req,res) => {
+    let userName = req.session.userid
+    let sql = `SELECT ID FROM MYMOVIES.USERS
+                WHERE MYMOVIES.USERS.USERNAME = '${userName}'`            
+    let userID = await SQLexecuter(sql)
+
+
+    
+    let sql2 = `SELECT G.ID,G.TITLE,COUNT(MG.GENREID) AS TOTAL
+                FROM USER_REVIEW U 
+                JOIN MOVIE M ON U.MOVIEID=M.ID
+                JOIN MOVIE_GENRE MG ON U.MOVIEID=MG.MOVIEID
+                JOIN GENRE G ON G.ID=MG.GENREID
+                WHERE U.USERID=${userID.rows[0].ID}
+                GROUP BY G.ID,G.TITLE
+                ORDER BY TOTAL DESC`
+    let data = await SQLexecuter(sql2)
+
+    let reviewCount = 0;
+    for (let datas of data.rows) reviewCount += datas.TOTAL
+    console.log(reviewCount)
+
+    let movies
+    let movieMap = new Map()
+    if (reviewCount > 10) {
+        for (let datum of data.rows)
+        {
+            let num = Math.ceil((datum.TOTAL/reviewCount)*15)
+            let sql3 = `SELECT * 
+                        FROM MOVIE M JOIN MOVIE_GENRE MG ON M.ID = MG.MOVIEID
+                        WHERE MG.GENREID = ${datum.ID}
+                        FETCH FIRST ${num} ROWS ONLY
+                        `
+            let movie = await SQLexecuter(sql3)
+            for (let row of movie.rows) movieMap.set(row.ID,row);
+            // console.log(num,datum.ID)
+        }
+    }
+    // console.log(movieMap)
+    movies = Array.from(movieMap.values())
+    // console.log(movies)
+    return movies
+    
+})
+
 
 const getWatchHistory = (async (req, res) => {
     let sql = `SELECT M.POSTER,M.ID,M.TITLE,M.AVGRATING,U.USERNAME
@@ -178,4 +223,4 @@ const removeFromWatchList = (async (req, res) => {
 
 
 
-export { getNewlyAddedMovies, getTopRatedMovies, getMostPopularCelebrities, getTopPicksMovies, getWatchHistory, addToWatchHistory,getWatchList, addToWatchList,removeFromWatchList }
+export { getNewlyAddedMovies, getTopRatedMovies, getMostPopularCelebrities, getTopPicksMovies, getForYou, getWatchHistory, addToWatchHistory,getWatchList, addToWatchList,removeFromWatchList }
